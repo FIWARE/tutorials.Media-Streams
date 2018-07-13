@@ -15,10 +15,10 @@ services:
     networks:
       - default
     environment:
-      - "KURENTO_HOST=kurento"
-      - "KURENTO_PORT=8888"
-      - "WEB_APP_HOST=kurento-examples"
-      - "WEB_APP_PORT=8443"
+      - "MEDIA_SERVER_HOST=kurento"
+      - "MEDIA_SERVER_PORT=8888"
+      - "APP_SERVER_HOST=kurento-examples"
+      - "APP_SERVER_PORT=8443"
       - "TUTORIAL_NAME=${TUTORIAL_NAME}"
 
   kurento:

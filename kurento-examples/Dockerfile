@@ -1,9 +1,9 @@
-FROM ubuntu:16.04
+FROM node:carbon
 
-ENV KURENTO_HOST=kurento
-ENV KURENTO_PORT=8888
-ENV WEB_APP_HOST=localhost
-ENV WEB_APP_PORT=8443
+ENV MEDIA_SERVER_HOST=kurento
+ENV MEDIA_SERVER_PORT=8888
+ENV APP_SERVER_HOST=localhost
+ENV APP_SERVER_PORT=8443
 ENV TUTORIAL_NAME=hello-world
 
 RUN apt-get update && apt-get install -y \
@@ -13,9 +13,7 @@ build-essential \
 curl \
 git \
 python
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - \
-&& apt-get install -y nodejs \
-&& rm -rf /var/lib/apt/lists/*
+
 
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
 
@@ -56,5 +54,5 @@ RUN npm install -g bower && \
   npm install --unsafe-perm
 
 
-EXPOSE ${WEB_APP_PORT}
-ENTRYPOINT cd kurento-${TUTORIAL_NAME}; npm start -- --ws_uri=ws://${KURENTO_HOST}:${KURENTO_PORT}/kurento --as_uri=https://${WEB_APP_HOST}:${WEB_APP_PORT}/
+EXPOSE ${APP_SERVER_PORT}
+ENTRYPOINT cd kurento-${TUTORIAL_NAME}; npm start -- --ws_uri=ws://${MEDIA_SERVER_HOST}:${MEDIA_SERVER_PORT}/kurento --as_uri=https://${APP_SERVER_HOST}:${APP_SERVER_PORT}/
