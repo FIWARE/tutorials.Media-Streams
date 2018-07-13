@@ -9,7 +9,7 @@ set -e
 
 stoppingContainers () {
 	echo "Stopping containers"
-	docker-compose --log-level ERROR -p fiware down -v --remove-orphans
+	docker-compose --log-level ERROR -f docker-compose/kurento-with-filters.yml -p fiware down -v --remove-orphans
 }
 startingContainers () {
 	echo -e "Starting two containers - \033[1;30mKurento\033[0m and \033[1;30mKurento-Examples (${command})\033[0m"

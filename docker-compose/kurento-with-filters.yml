@@ -17,7 +17,7 @@ services:
     environment:
       - "KURENTO_HOST=kurento"
       - "KURENTO_PORT=8888"
-      - "WEB_APP_HOST=localhost"
+      - "WEB_APP_HOST=kurento-examples"
       - "WEB_APP_PORT=8443"
       - "TUTORIAL_NAME=${TUTORIAL_NAME}"
 
