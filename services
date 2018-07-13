@@ -1,0 +1,77 @@
+#!/bin/bash
+#
+#  Command Line Interface to start all services associated with the Fast/Micro-RTPS tutorials
+#
+#  For this tutorial the commands are merely a convenience script to run docker-compose
+#
+
+set -e
+
+stoppingContainers () {
+	echo "Stopping containers"
+	docker-compose --log-level ERROR -p fiware down -v --remove-orphans
+}
+startingContainers () {
+	echo -e "Starting two containers - \033[1;30mKurento\033[0m and \033[1;30mKurento-Examples (${command})\033[0m"
+	TUTORIAL_NAME=${command} docker-compose --log-level ERROR -f docker-compose/kurento-with-filters.yml -p fiware up -d --remove-orphans 
+}
+
+
+
+if (( $# != 1 )); then
+    echo "Illegal number of parameters"
+    echo "usage: services [start|stop]"
+    exit 1
+fi
+
+command="$1"
+case "${command}" in
+	"help")
+        echo "usage: services [start|stop]"
+        ;;
+    "start")
+		stoppingContainers;
+		echo -e "Starting two containers - \033[1;30mKurento\033[0m and \033[1;30mKurento-Examples (hello-world)\033[0m"
+		docker-compose --log-level ERROR -f docker-compose/kurento.yml -p fiware up -d --remove-orphans 
+		;;
+	"chroma")
+		stoppingContainers;
+		startingContainers;
+		;;
+	"crowd-detector")
+		stoppingContainers;
+		startingContainers;
+		;;
+	"hello-world")
+		stoppingContainers;
+		echo -e "Starting two containers - \033[1;30mKurento\033[0m and \033[1;30mKurento-Examples (hello-world)\033[0m"
+		docker-compose --log-level ERROR -f docker-compose/kurento.yml -p fiware up -d --remove-orphans 
+		;;
+	"magic-mirror")
+		stoppingContainers;
+		startingContainers;
+		;;
+	"module-tests-api")
+		stoppingContainers;
+		startingContainers;
+		;;
+	"one2many-call")
+		stoppingContainers;
+		startingContainers;
+		;;
+	"one2one-call")
+		stoppingContainers;
+		startingContainers;
+		;;
+	"platedetector")
+		stoppingContainers;
+		startingContainers;
+		;;
+	"pointerdetector")
+		stoppingContainers;
+		startingContainers;
+		;;
+	"stop")
+		stoppingContainers
+		;;
+esac

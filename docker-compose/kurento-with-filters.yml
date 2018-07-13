@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+
+  kurento-examples:
+    image: fiware/kurento-examples
+    container_name: examples-kurento
+    depends_on:
+      - kurento
+    build: 
+      context: ../kurento-examples
+      dockerfile: Dockerfile
+    ports:
+      - 8443:8443
+    networks:
+      - default
+    environment:
+      - "KURENTO_HOST=kurento"
+      - "KURENTO_PORT=8888"
+      - "WEB_APP_HOST=localhost"
+      - "WEB_APP_PORT=8443"
+      - "TUTORIAL_NAME=${TUTORIAL_NAME}"
+
+  kurento:
+    image: fiware/stream-oriented-kurento-plus-filters
+    hostname: kurento
+    container_name: fiware-kurento
+    build: 
+      context: ../kurento-filters
+      dockerfile: Dockerfile
+    expose:
+      - "8888"
+    ports:
+      - 8888:8888
+    networks:
+      - default
+
+networks:
+  default:
+     

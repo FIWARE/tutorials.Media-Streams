@@ -1,0 +1,3 @@
+[submodule "kurento-examples/nodejs"]
+	path = kurento-examples/nodejs
+	url = https://github.com/Kurento/kurento-tutorial-node.git
