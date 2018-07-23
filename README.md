@@ -18,7 +18,27 @@ The tutorial introduces a series of exercises which can be run directly from wit
 
 # Contents
 
-TO DO ...
+- [What are Media Streams?](#what-are-media-streams)
+  * [The teaching goal of this tutorial](#the-teaching-goal-of-this-tutorial)
+- [Prerequisites](#prerequisites)
+  * [Docker](#docker)
+  * [Cygwin](#cygwin)
+- [Start Up](#start-up)
+- [Architecture](#architecture)
+- [Kurento - Hello World](#kurento---hello-world)
+  * [Hello World - Start Up](#hello-world---start-up)
+    + [Service Health](#service-health)
+    + [Running the Example](#running-the-example)
+  * [Analysing the Code](#analysing-the-code)
+- [Kurento - Altering Media Streams](#kurento---altering-media-streams)
+  * [Altering Media Streams - Start Up](#altering-media-streams---start-up)
+    + [Running the Example](#running-the-example-1)
+  * [Analysing the Code](#analysing-the-code-1)
+- [Kurento - Raising Context Events](#kurento---raising-context-events)
+  * [Raising Context Events - Start Up](#raising-context-events----start-up)
+    + [Running the Example](#running-the-example-2)
+  * [Analysing the Code](#analysing-the-code-2)
+- [Next Steps](#next-steps)
 
 
 # What are Media Streams?
@@ -38,6 +58,18 @@ the server intercepts the stream of data and passes the communication on to anot
 additional features such as group communition and broadcasting, but also means that is possible to process and interpret the
 media stream as it is received enabling transcoding, recording, mixing or object detection.
 
+## The teaching goal of this tutorial
+
+The goal of this tutorial is to provide you with a simple getting started guide on how to install and use the **Kurento** Media Server. For this purpose a simple Node.js Express application will be created. The emphasis will be on how to integrate
+**Kurento** as a generic enabler within the FIWARE system and alter context.
+
+The intention here is not to teach users how manipulate media streams using Node - indeed any language could have been chosen. It is merely to show how a sample programming language could be used analyse and alter a media stream to potentially raise
+events and alter the context of a product *"powered by FIWARE"*.
+
+All the code for the demo can be found within the `nodejs` folder within the [kurento-examples](https://github.com/Fiware/tutorials.Media-Streams/tree/master/kurento-examples) directory. Alternative `client-side-javascript` and `java` examples are also available. Obviously, your choice of programming language will depend upon your own business needs - when reading the code below please keep this in mind and substitute Node.js with your own programming language as appropriate.
+
+Additional non-context related **Kurento** examples exist, which are beyond the scope of this tutorial. For more information, please refer to the [official Kurento Tutorial Documentation](https://doc-kurento.readthedocs.io/en/stable/user/tutorials.html).
+**Kurento** is a stand-alone product and can also be used outside of the FIWARE ecosystem as a generic media server.
 
 
 # Prerequisites
@@ -103,38 +135,105 @@ Usage of the Media server alone is insufficient for an application to qualify as
 The overall architecture will consist of the following elements:
 
 * One **FIWARE Generic Enabler**:
-  * FIWARE [Kurento](http://kurento.readthedocs.io/) acts as a Media Server which will intercept [WebRTC](https://webrtc.org/) traffic
+  * FIWARE [Kurento](http://kurento.readthedocs.io/) acts as a Media Server which will intercept [WebRTC](https://webrtc.org/) traffic, additional processing will be added as necessary
 
-* One **Client Application**:
-  *  Which will send a [WebRTC](https://webrtc.org/) media stream and display results (either received processed video or detected events )
+* One **Application Server** (Examples) which:
+  * Displays a web-page, allowing a user to switch on their camera and interact.
+  * Sends a [WebRTC](https://webrtc.org/) media stream and displays results (either received processed video or detected events )
 
 Since all interactions between the elements are initiated by HTTP requests, the entities can be containerized and run from exposed ports.
+
+
+![](https://fiware.github.io/tutorials.Media-Streams/img/architecture.png)
 
 The specific architecture of each section of the tutorial is discussed below.
 
 
 
-# Introduction to Kurento
+# Kurento - Hello World
 
-The goal of this section is to provide you with a simple getting started guide on how to install and use the Kurento Media Server.
-All the code Node.js for the demo can be found within the `nodejs` folder within the GitHub repository.[Media Streams](https://github.com/Fiware/tutorials.Media-Streams/tree/master/kurento-examples). Alternative `client-side-javascript` and `java` examples are also available.
+Before describing a proper context-related example, we will first examine a minimal set-up "Hello World" example - this
+is a very simple WebRTC application implementing a WebRTC loopback. A media stream is generated from a web-cam. It is
+displayed on the browser but also sent to the **Kurento** media server where it is redirected un-altered back
+to the client application.
 
-## Kurento - Example Usage
+![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world.png)
+
+The net result is that two identical video elements are displayed on the same screen (with a minimal lag between them).
+This is not a useful application in itself, but will demonstrate that the media server can be accessed and is
+capable of streaming video.
+
+## Hello World - Start Up
+
+To start the system with the simplest integration of **Kurento**, run the following command:
+
+```console
+./services hello-world
+```
 
 ### Service Health
 
 
-### Getting Started
+### Running the Example
 
-### Object Detection
+## Analysing the Code
 
-### Filters
-
-
+The code under discussion can be found within the `kurento-hello-world` directory within the Git Repository
 
 
+# Kurento - Altering Media Streams
 
-Other examples are available in the `nodejs` folder, which are beyond the scope of this tutorial. For more information, please refer to the [official Kurento documentation](http://doc-kurento.readthedocs.io/).
+In order to alter context, we will need to be able to process the media stream. This second example
+builds on the previous WebRTC loopback video communication but also analyses and
+alters the media stream by detecting faces and placing a hat over detected faces. This is an example of a
+Computer Vision and Augmented Reality filter.
+
+![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror.png)
+
+##  Altering Media Streams - Start Up
+
+To start the system with an example of **Kurento** altering a media stream, run the following command:
+
+```console
+./services magic-mirror
+```
+
+### Running the Example
+
+
+## Analysing the Code
+
+The code under discussion can be found within the `kurento-magic-mirror` directory within the Git Repository
+
+
+
+# Kurento - Raising Context Events
+
+A media stream can also be analysed and used to raise context-related events. The final example of
+this tutorial adds a vehicle number plate detector filter element to the WebRTC video communication
+
+![](https://fiware.github.io/tutorials.Media-Streams/img/plate-detector.png)
+
+The events raised could be associated to context entities, and therefore be suitable for integration within the FIWARE
+ecosystem. For example if **Kurento** was attached to a security camera, code you be added to send a PATCH request to
+the Orion Context Broker to update the context of entity **Camera X** to show that a vehicle registration plate
+`XXX-xxx-XXX` was detected at time `yyy-yyy-yyy`.
+
+## Raising Context Events  - Start Up
+
+To start the system with an example of **Kurento** raising events, run the following command:
+
+```console
+./services plate-detection
+```
+
+### Running the Example
+
+
+## Analysing the Code
+
+The code under discussion can be found within the `kurento-platedetector` directory within the Git Repository
+
 
 
 
@@ -142,12 +241,18 @@ Other examples are available in the `nodejs` folder, which are beyond the scope 
 
 # Next Steps
 
-Want to learn how to add more complexity to your application by adding advanced features?
+Want to learn how to add more complexity to your FIWARE application by adding advanced features?
 You can find out by reading the other [tutorials in this series](https://fiware-tutorials.readthedocs.io/en/latest)
+
+For more ideas about the capabilities of the **Kurento** media server, please read the offical [Kurento Tutorial Documentation](https://doc-kurento.readthedocs.io/).
 
 ---
 
 ## License
 
 [MIT](LICENSE) © FIWARE Foundation e.V.
+
+The Program includes additional submodules which were obtained under license:
+
+* [kurento-example/nodejs](https://github.com/Kurento/kurento-tutorial-node) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
 
