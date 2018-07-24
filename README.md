@@ -69,7 +69,7 @@ transcoding, recording or mixing.
 
 ## The teaching goal of this tutorial
 
-The goal of this tutorial is to provide you with a simple getting started guide on how to install and use the **Kurento** Media Server. For this purpose a simple Node.js Express application will be discussed. The emphasis will be on how to integrate
+The goal of this tutorial is to provide you with a simple getting started guide on how to install and use the **Kurento Media Server**. For this purpose a simple Node.js Express application will be discussed. The emphasis will be on how to integrate
 **Kurento** as a generic enabler within the FIWARE system and alter context.
 
 The intention here is not to teach users how manipulate media streams using Node.js - an alternative such as Java could
@@ -79,7 +79,7 @@ stream to potentially raise events and alter the context of a product *"powered 
 All the code for the demo can be found within the `nodejs` folder within the [kurento-examples](https://github.com/Fiware/tutorials.Media-Streams/tree/master/kurento-examples) directory. Alternative `client-side-javascript` and `java` examples are also available. Obviously, your choice of programming language will depend upon your own business needs - when reading the code below please keep this in mind and substitute Node.js with your own programming language as appropriate.
 
 Additional non-context related **Kurento** examples exist, which are beyond the scope of this tutorial. For more information, please refer to the [official Kurento Tutorial Documentation](https://doc-kurento.readthedocs.io/en/stable/user/tutorials.html).
-The **Kurento** Media Server is a stand-alone product and can also be used outside of the FIWARE ecosystem as a generic media server.
+The **Kurento Media Server** is a stand-alone product and can also be used outside of the FIWARE ecosystem as a generic media server.
 
 
 # Prerequisites
@@ -177,7 +177,7 @@ The `kurento` container is listening on a single port:
 
 ## Application Server Configuration
 
-```
+```yaml
   kurento-examples:
     image: fiware/kurento-examples
     container_name: examples-kurento
@@ -216,9 +216,9 @@ The `kurento-examples` container is driven by environment variables as shown:
 # Connecting to a Media Sever
 
 Before describing a proper context-related example, we will first examine a minimal set-up "Hello World" example
-to check that we are able to connect to the **Kurento** media server and send and receive a video stream. This
+to check that we are able to connect to the **Kurento Media Server** and send and receive a video stream. This
 is a very simple [WebRTC](https://webrtc.org/) application implementing a WebRTC loopback. A media stream is generated
-from a web-cam. It is displayed on the browser but also sent to the **Kurento** media server where it is redirected
+from a web-cam. It is displayed on the browser but also sent to the **Kurento Media server** where it is redirected
 un-altered back to the client application.
 
 ![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world.png)
@@ -237,7 +237,7 @@ To start the system with the simplest integration of **Kurento**, run the follow
 
 ### Service Health
 
-You can check if the Kurento Media Server is running by making an HTTP request to the exposed port `8888`
+You can check if the **Kurento Media Server** is running by making an HTTP request to the exposed port `8888`
 
 ```console
 curl -iX GET \
@@ -251,7 +251,7 @@ HTTP/1.1 426 Upgrade Required
 Server: WebSocket++/0.7.0
 ```
 
-The response code  `426` indicates that the **Kurento** Media Server is responding on the given port, but will not respond successfully to HTTP requests. The Media Server will only respond successfully to WebSocket traffic.
+The response code  `426` indicates that the **Kurento Media Server** is responding on the given port, but will not respond successfully to HTTP requests. The Media Server will only respond successfully to WebSocket traffic.
 
 
 >**What if I get a `Failed to connect to localhost port 8888: Connection refused` Response?**
@@ -363,13 +363,13 @@ wss.on('connection', function(ws) {
 ```
 
 After the initial connection `wss.on('connection', ...)`,  there are several message types to handle, the main two
-message types to handle are `start`  which then makes a connection to the **Kurento** Media Server (see  `start()`
+message types to handle are `start`  which then makes a connection to the **Kurento Media Server** (see  `start()`
 function below) and `onIceCandidate` (see `onIceCandidate()` function below). Stopping, closing the connection and
 error handling are handled in a standard manner and are not discussed here.
 
 ### Back-End - Connecting to Kurento
 
-Kurento offers a well-defined [WebSocket API](http://kurento.github.io/doc-kurento/) -
+**Kurento** offers a well-defined [WebSocket API](http://kurento.github.io/doc-kurento/) -
 To establish a WebSocket connection, the client needs to send a WebSocket handshake request
 to the `/kurento` endpoint, and the media server will return a WebSocket handshake response.
 
@@ -558,7 +558,7 @@ ws.onmessage = function(message) {
 
 ```
 
-A fuller description of the code can be found within the Kurento documenation.
+A fuller description of the code can be found within the **Kurento** documenation.
 
 
 # Altering Media Streams
@@ -593,7 +593,8 @@ back to the client. Click on the start button and the  modified video will be di
 The code under discussion can be found within the `kurento-magic-mirror` directory within the Git Repository.
 This example builds on the previous `hello world` example, and much of the common boilerplate plumbing  -
 making the WebSocket connections between the Web-page and the Application Server, and the connections between
-the Application Server and Kurento remains the same. Please refer to the sections above to refresh your understanding
+the Application Server and the **Kurento Media Server** remains the same. Please refer to the sections above to
+refresh your understanding:
 
 * Back-End - WebSocket Connection
 * Back-End - Connecting to Kurento
@@ -603,11 +604,11 @@ the Application Server and Kurento remains the same. Please refer to the section
 
 The main difference compared to the previous example, is that we are going to add a **filter**
 to alter the video output prior to sending it to the web-page.  The `kms-filters` module is loaded by
-default as part of the **Kurento** Media Server - it contains the following built-in [filters](https://doc-kurento.readthedocs.io/en/latest/features/kurento_api.html#filters):
+default as part of the **Kurento Media Server** - it contains the following built-in [filters](https://doc-kurento.readthedocs.io/en/latest/features/kurento_api.html#filters):
 
 * The `ZBarFilter` filter detects QR and bar codes in a video stream. When a code is found, the filter raises a `CodeFoundEvent`
 * The `FaceOverlayFilter` filter detects faces in a video stream and overlaid it with a configurable image.
-* The `GStreamerFilter` is a generic filter interface that enables the use of [GStreamer](https://gstreamer.freedesktop.org/) filters in Kurento Media Pipelines.
+* The `GStreamerFilter` is a generic filter interface that enables the use of [GStreamer](https://gstreamer.freedesktop.org/) filters in **Kurento** Media Pipelines.
 
 The built-in filters (such as  `FaceOverlayFilter`) can be created using the `pipeline.create()` function.
 We therefore need to extend the `createMediaElements()` and `connectMediaElements()` functions as shown below:
@@ -720,7 +721,7 @@ The code under discussion can be found within the `kurento-platedetector` direct
 
 Once again, the boilerplate plumbing very similar to the previous examples - the code
 making the WebSocket connections between the Web-page and the Application Server, and the connections between
-the Application Server and Kurento are unaltered. Please refer to the sections above to refresh your understanding
+the Application Server and the **Kurento Media Server** are unaltered. Please refer to the sections above to refresh your understanding
 
 * Back-End - WebSocket Connection
 * Back-End - Connecting to Kurento
@@ -765,12 +766,12 @@ to the Media pipeline:
 
 ```javascript
 function createMediaElements(pipeline, ws, callback) {
-    pipeline.create('WebRtcEndpoint', function(error, webRtcEndpoint) {
+    pipeline.create('WebRtcEndpoint', (error, webRtcEndpoint) => {
         if (error) {
             return callback(error);
         }
 
-        pipeline.create('platedetector.PlateDetectorFilter', function(error, filter) {
+        pipeline.create('platedetector.PlateDetectorFilter', (error, filter) => {
             if (error) {
                 return callback(error);
             }
@@ -782,12 +783,12 @@ function createMediaElements(pipeline, ws, callback) {
 ```
 ```javascript
 function connectMediaElements(webRtcEndpoint, filter, callback) {
-    webRtcEndpoint.connect(filter, function(error) {
+    webRtcEndpoint.connect(filter, (error) => {
         if (error) {
             return callback(error);
         }
 
-        filter.connect(webRtcEndpoint, function(error) {
+        filter.connect(webRtcEndpoint, (error) => {
             if (error) {
                  return callback(error);
             }
@@ -829,7 +830,7 @@ The result is that the details of the vehicle registration plate  is now display
 Want to learn how to add more complexity to your FIWARE application by adding advanced features?
 You can find out by reading the other [tutorials in this series](https://fiware-tutorials.readthedocs.io/en/latest)
 
-For more ideas about the capabilities of the **Kurento** media server, please read the offical [Kurento Tutorial Documentation](https://doc-kurento.readthedocs.io/).
+For more ideas about the capabilities of the **Kurento Media Server**, please read the offical [Kurento Tutorial Documentation](https://doc-kurento.readthedocs.io/).
 
 ---
 
