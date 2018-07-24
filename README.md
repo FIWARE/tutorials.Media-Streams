@@ -30,21 +30,23 @@ The tutorial introduces a series of exercises which can be run directly from wit
 - [Connecting to a Media Sever](#connecting-to-a-media-sever)
   * [Hello World - Start Up](#hello-world---start-up)
     + [Service Health](#service-health)
-    + [Running the Example](#running-the-example)
-  * [Analyzing the Code](#analyzing-the-code)
+    + [Hello World - Running the Example](#hello-world---running-the-example)
+  * [Hello World - Analyzing the Code](#hello-world---analyzing-the-code)
     + [Back-End - WebSocket Connection](#back-end---websocket-connection)
     + [Back-End - Connecting to Kurento](#back-end---connecting-to-kurento)
     + [Back-End - Creating a Media Pipeline](#back-end---creating-a-media-pipeline)
     + [Front-End - JavaScript on the rendered page](#front-end---javascript-on-the-rendered-page)
 - [Altering Media Streams](#altering-media-streams)
-  * [Altering Media Streams - Start Up](#altering-media-streams---start-up)
-    + [Running the Example](#running-the-example-1)
-  * [Analyzing the Code](#analyzing-the-code-1)
+  * [Magic Mirror - Start Up](#magic-mirror---start-up)
+    + [Magic Mirror - Running the Example](#magic-mirror---running-the-example)
+  * [Magic Mirror - Analyzing the Code](#magic-mirror---analyzing-the-code)
+    + [Back-End - Adding a built-in Filter to a Media Pipeline](#back-end---adding-a-built-in-filter-to-a-media-pipeline)
 - [Raising Context Events](#raising-context-events)
-  * [Raising Context Events - Start Up](#raising-context-events----start-up)
-    + [Running the Example](#running-the-example-2)
-  * [Analyzing the Code](#analyzing-the-code-2)
-- [Next Steps](#next-steps)
+  * [Plate Detector - Start Up](#plate-detector----start-up)
+    + [Plate Detector - Running the Example](#plate-detector---running-the-example)
+  * [Plate Detector - Analyzing the Code](#plate-detector---analyzing-the-code)
+    + [Back-End - Adding a custom filter to a Media Pipeline](#back-end---adding-a-custom-filter-to-a-media-pipeline)
+    + [Front-End - JavaScript on the rendered page](#front-end---javascript-on-the-rendered-page-1)
 
 
 # What are Media Streams?
@@ -62,15 +64,17 @@ WebRTC can be enhanced by introducing an intellegent middleware application betw
 The FIWARE **Kurento** generic enabler is a WebRTC Media Server. Each client makes a direct connection to the server, and
 the server intercepts the stream of data and passes the communication on to another client or clients. This model enables
 additional features such as group communition and broadcasting, but also means that is possible to process and interpret the
-media stream as it is received enabling transcoding, recording, mixing or object detection.
+media stream as it is received enabling object detection - and hence an ability to raise context events - as well as
+transcoding, recording or mixing.
 
 ## The teaching goal of this tutorial
 
-The goal of this tutorial is to provide you with a simple getting started guide on how to install and use the **Kurento** Media Server. For this purpose a simple Node.js Express application will be created. The emphasis will be on how to integrate
+The goal of this tutorial is to provide you with a simple getting started guide on how to install and use the **Kurento** Media Server. For this purpose a simple Node.js Express application will be discussed. The emphasis will be on how to integrate
 **Kurento** as a generic enabler within the FIWARE system and alter context.
 
-The intention here is not to teach users how manipulate media streams using Node - indeed any language could have been chosen. It is merely to show how a sample programming language could be used analyze and alter a media stream to potentially raise
-events and alter the context of a product *"powered by FIWARE"*.
+The intention here is not to teach users how manipulate media streams using Node.js - an alternative such as Java could
+equally have been chosen. It is merely to show how a sample programming language could be used analyze and alter a media
+stream to potentially raise events and alter the context of a product *"powered by FIWARE"*.
 
 All the code for the demo can be found within the `nodejs` folder within the [kurento-examples](https://github.com/Fiware/tutorials.Media-Streams/tree/master/kurento-examples) directory. Alternative `client-side-javascript` and `java` examples are also available. Obviously, your choice of programming language will depend upon your own business needs - when reading the code below please keep this in mind and substitute Node.js with your own programming language as appropriate.
 
@@ -130,9 +134,6 @@ Where `<command>` will vary depending upon the exercise we wish to activate.
 >./services stop
 >```
 >
-
-
-
 # Architecture
 
 This application will only make use of one FIWARE component - the [Kurento Media Server](http://kurento.readthedocs.io/)).
@@ -270,7 +271,7 @@ The response code  `426` indicates that the **Kurento** Media Server is respondi
 >This command will also display open port information.
 >
 
-### Running the Example
+### Hello World - Running the Example
 
 To run the example, open a WebRTC compatible browser at `https://localhost:8443` and accept HTTPS traffic to open
 the page. The application consists of a single HTML web page containing two HTML5 `<video>` tags: one showing
@@ -293,7 +294,7 @@ You can restart the Kurento Media Server by running:
 docker start fiware-kurento
 ```
 
-## Analyzing the Code
+## Hello World - Analyzing the Code
 
 The code under discussion can be found within the `kurento-hello-world` directory within the Git Repository
 The main script of this demo is called `server.js`. For simplicity, all URLs have been hard-coded and error
@@ -454,13 +455,12 @@ function createMediaElements(pipeline, ws, callback) {
         if (error) {
             return callback(error);
         }
-
         return callback(null, webRtcEndpoint);
     });
 }
 ```
 ```javascript
- function connectMediaElements(webRtcEndpoint, callback) {
+function connectMediaElements(webRtcEndpoint, callback) {
     webRtcEndpoint.connect(webRtcEndpoint, (error) => {
         if (error) {
             return callback(error);
@@ -570,7 +570,7 @@ Computer Vision and Augmented Reality filter.
 
 ![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror.png)
 
-##  Altering Media Streams - Start Up
+##  Magic Mirror - Start Up
 
 To start the system with an example of **Kurento** altering a media stream, run the following command:
 
@@ -578,7 +578,7 @@ To start the system with an example of **Kurento** altering a media stream, run 
 ./services magic-mirror
 ```
 
-### Running the Example
+### Magic Mirror - Running the Example
 
 To run the example, open a WebRTC compatible browser at `https://localhost:8443` and accept HTTPS traffic to open
 the page. The application consists of a single HTML web page containing two HTML5 `<video>` tags: one showing
@@ -588,10 +588,73 @@ back to the client. Click on the start button and the  modified video will be di
 ![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror-screenshot.png)
 
 
-## Analyzing the Code
+## Magic Mirror - Analyzing the Code
 
-The code under discussion can be found within the `kurento-magic-mirror` directory within the Git Repository
+The code under discussion can be found within the `kurento-magic-mirror` directory within the Git Repository.
+This example builds on the previous `hello world` example, and much of the common boilerplate plumbing  -
+making the WebSocket connections between the Web-page and the Application Server, and the connections between
+the Application Server and Kurento remains the same. Please refer to the sections above to refresh your understanding
 
+* Back-End - WebSocket Connection
+* Back-End - Connecting to Kurento
+* Front-End - JavaScript on the rendered page
+
+### Back-End - Adding a built-in Filter to a Media Pipeline
+
+The main difference compared to the previous example, is that we are going to add a **filter**
+to alter the video output prior to sending it to the web-page.  The `kms-filters` module is loaded by
+default as part of the **Kurento** Media Server - it contains the following built-in [filters](https://doc-kurento.readthedocs.io/en/latest/features/kurento_api.html#filters):
+
+* The `ZBarFilter` filter detects QR and bar codes in a video stream. When a code is found, the filter raises a `CodeFoundEvent`
+* The `FaceOverlayFilter` filter detects faces in a video stream and overlaid it with a configurable image.
+* The `GStreamerFilter` is a generic filter interface that enables the use of [GStreamer](https://gstreamer.freedesktop.org/) filters in Kurento Media Pipelines.
+
+The built-in filters (such as  `FaceOverlayFilter`) can be created using the `pipeline.create()` function.
+We therefore need to extend the `createMediaElements()` and `connectMediaElements()` functions as shown below:
+
+```javascript
+function createMediaElements(pipeline, ws, callback) {
+    pipeline.create('WebRtcEndpoint', (error, webRtcEndpoint) => {
+        if (error) {
+            return callback(error);
+        }
+        // Once the WebRtcEndpoint is created create a FaceOverlayFilter
+        pipeline.create('FaceOverlayFilter', (error, faceOverlayFilter) => {
+            if (error) {
+                return callback(error);
+            }
+            // This adds the Mario hat
+            faceOverlayFilter.setOverlayedImage(url.format(asUrl) + 'img/mario-wings.png',
+                    -0.35, -1.2, 1.6, 1.6, function(error) {
+                if (error) {
+                    return callback(error);
+                }
+                return callback(null, webRtcEndpoint, faceOverlayFilter);
+            });
+        });
+    });
+}
+```
+```javascript
+function connectMediaElements(webRtcEndpoint, faceOverlayFilter, callback) {
+    webRtcEndpoint.connect(faceOverlayFilter, (error) => {
+        if (error) {
+            return callback(error);
+        }
+        faceOverlayFilter.connect(webRtcEndpoint, (error) => {
+            if (error) {
+                return callback(error);
+            }
+
+            return callback(null);
+        });
+    });
+}
+```
+
+The functions called in the `start()` function remain the same - the media streams are connected
+and now passed through a pipeline before being retuned to the web-page.
+The result is that the video stream is now intercepted and altered as demonstrated.
 
 
 # Raising Context Events
@@ -606,7 +669,7 @@ ecosystem. For example if **Kurento** was attached to a security camera, code yo
 the Orion Context Broker to update the context of entity **Camera X** to show that a vehicle registration plate
 `XXX-xxx-XXX` was detected at time `yyy-yyy-yyy`.
 
-## Raising Context Events  - Start Up
+## Plate Detector  - Start Up
 
 To start the system with an example of **Kurento** raising events, run the following command:
 
@@ -614,7 +677,7 @@ To start the system with an example of **Kurento** raising events, run the follo
 ./services plate-detection
 ```
 
-### Running the Example
+### Plate Detector - Running the Example
 
 
 To run the example, open a WebRTC compatible browser at `https://localhost:8443` and accept HTTPS traffic to open
@@ -651,11 +714,114 @@ License plate detected --8886AJR
 The reliability of detection will depend on the camera and filter used.
 
 
-## Analyzing the Code
+## Plate Detector - Analyzing the Code
 
 The code under discussion can be found within the `kurento-platedetector` directory within the Git Repository
 
+Once again, the boilerplate plumbing very similar to the previous examples - the code
+making the WebSocket connections between the Web-page and the Application Server, and the connections between
+the Application Server and Kurento are unaltered. Please refer to the sections above to refresh your understanding
 
+* Back-End - WebSocket Connection
+* Back-End - Connecting to Kurento
+* Front-End - JavaScript on the rendered page
+
+### Back-End - Adding a custom filter to a Media Pipeline
+
+Beyond the basic `kms-filters` filters provided, you will need to
+[write you own custom code](https://doc-kurento.readthedocs.io/en/stable/user/writing_modules.html) to process
+video (and detect events). These custom filters are [modules](https://doc-kurento.readthedocs.io/en/stable/features/kurento_modules.html) which are typically installed when setting up the media server.
+
+Rather than writing our own custom module from scratch (which is beyond the scope of this tutorial),
+we will use on of the four freely-distributable, custom modules  already created by the Kurento development team:
+
+* `kms-pointerdetector`: Filter that detects pointers in video streams, based on color tracking.
+* `kms-chroma`: Filter that takes a color range in the top layer and makes it transparent, revealing another image behind.
+* `kms-crowddetector`: Filter that detects people agglomeration in video streams.
+* `kms-platedetector`: Prototype Filter that detects vehicle plates in video streams - Not for production use.
+
+
+To install the modules, we must extend the default `fiware/stream-oriented-kurento` Docker image by using a
+custom [Dockerfile](https://github.com/Fiware/tutorials.Media-Streams/blob/master/docker-compose/Dockerfile), which installs
+the modules as shown:
+
+```bash
+apt-get -y install kms-pointerdetector-6.0 \
+&& apt-get -y install kms-crowddetector-6.0 \
+&& apt-get -y install kms-platedetector-6.0 \
+&& apt-get -y install kms-chroma-6.0 \
+```
+
+For the example, we only need to register the `kurento-module-platedetector` module to make the filter available:
+
+```javascript
+const kurento = require('kurento-client');
+kurento.register('kurento-module-platedetector');
+```
+
+The  `platedetector.PlateDetectorFilter` can be then be created using the `pipeline.create()` function.
+Extending the `createMediaElements()` and `connectMediaElements()` functions as shown below to add the filter
+to the Media pipeline:
+
+```javascript
+function createMediaElements(pipeline, ws, callback) {
+    pipeline.create('WebRtcEndpoint', function(error, webRtcEndpoint) {
+        if (error) {
+            return callback(error);
+        }
+
+        pipeline.create('platedetector.PlateDetectorFilter', function(error, filter) {
+            if (error) {
+                return callback(error);
+            }
+
+            return callback(null, webRtcEndpoint, filter);
+        });
+    });
+}
+```
+```javascript
+function connectMediaElements(webRtcEndpoint, filter, callback) {
+    webRtcEndpoint.connect(filter, function(error) {
+        if (error) {
+            return callback(error);
+        }
+
+        filter.connect(webRtcEndpoint, function(error) {
+            if (error) {
+                 return callback(error);
+            }
+
+            return callback(null);
+        });
+    });
+}
+```
+
+### Front-End - JavaScript on the rendered page
+
+In addition to the standard boilerplate from the previous examples, an extra clause is added
+to the WebSocket processing to handle the `plateDectected` event which is raised by the `platedetector.PlateDetectorFilter` :
+
+```javascript
+ws.onmessage = function(message) {
+	var parsedMessage = JSON.parse(message.data);
+	console.info('Received message: ' + message.data);
+
+	switch (parsedMessage.id) {
+...etc
+	case 'plateDetected':
+		plateDetected(parsedMessage);
+		break;
+	}
+```
+```javascript
+function plateDetected(message) {
+	console.log("License plate detected " + message.data.plate);
+}
+```
+
+The result is that the details of the vehicle registration plate  is now displayed on screen.
 
 
 # Next Steps
@@ -675,7 +841,7 @@ The Program includes additional submodules which were obtained under license:
 
 * [kurento-example/nodejs](https://github.com/Kurento/kurento-tutorial-node) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
 
-The Vehicle Registration Plate Images are public domain or have been obtained from Wikipedia Commons under license:
+The vehicle registration plate images are public domain or have been obtained from Wikipedia Commons under license:
 
 *  Argentina  © [Quilmeño89](https://commons.wikimedia.org/wiki/User:Quilme%C3%B1o89) **Creative Commons Attribution-Share Alike 4.0 International**
 * Australia  © [EurovisionNim](https://commons.wikimedia.org/wiki/User:EurovisionNim) **Creative Commons Attribution-Share Alike 4.0 International**
