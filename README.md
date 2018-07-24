@@ -31,7 +31,7 @@ The tutorial introduces a series of exercises which can be run directly from wit
   * [Hello World - Start Up](#hello-world---start-up)
     + [Service Health](#service-health)
     + [Running the Example](#running-the-example)
-  * [Analysing the Code](#analysing-the-code)
+  * [Analyzing the Code](#analyzing-the-code)
     + [Back-End - WebSocket Connection](#back-end---websocket-connection)
     + [Back-End - Connecting to Kurento](#back-end---connecting-to-kurento)
     + [Back-End - Creating a Media Pipeline](#back-end---creating-a-media-pipeline)
@@ -39,11 +39,11 @@ The tutorial introduces a series of exercises which can be run directly from wit
 - [Altering Media Streams](#altering-media-streams)
   * [Altering Media Streams - Start Up](#altering-media-streams---start-up)
     + [Running the Example](#running-the-example-1)
-  * [Analysing the Code](#analysing-the-code-1)
+  * [Analyzing the Code](#analyzing-the-code-1)
 - [Raising Context Events](#raising-context-events)
   * [Raising Context Events - Start Up](#raising-context-events----start-up)
     + [Running the Example](#running-the-example-2)
-  * [Analysing the Code](#analysing-the-code-2)
+  * [Analyzing the Code](#analyzing-the-code-2)
 - [Next Steps](#next-steps)
 
 
@@ -69,7 +69,7 @@ media stream as it is received enabling transcoding, recording, mixing or object
 The goal of this tutorial is to provide you with a simple getting started guide on how to install and use the **Kurento** Media Server. For this purpose a simple Node.js Express application will be created. The emphasis will be on how to integrate
 **Kurento** as a generic enabler within the FIWARE system and alter context.
 
-The intention here is not to teach users how manipulate media streams using Node - indeed any language could have been chosen. It is merely to show how a sample programming language could be used analyse and alter a media stream to potentially raise
+The intention here is not to teach users how manipulate media streams using Node - indeed any language could have been chosen. It is merely to show how a sample programming language could be used analyze and alter a media stream to potentially raise
 events and alter the context of a product *"powered by FIWARE"*.
 
 All the code for the demo can be found within the `nodejs` folder within the [kurento-examples](https://github.com/Fiware/tutorials.Media-Streams/tree/master/kurento-examples) directory. Alternative `client-side-javascript` and `java` examples are also available. Obviously, your choice of programming language will depend upon your own business needs - when reading the code below please keep this in mind and substitute Node.js with your own programming language as appropriate.
@@ -277,6 +277,8 @@ the page. The application consists of a single HTML web page containing two HTML
 the local stream (as captured by the local webcam) and the other showing the remote stream sent by the media server
 back to the client. Click on the start button and the  same video will be displayed in both `<video>` elements.
 
+![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-screenshot.png)
+
 You  can check that the remote stream has been re-directed by bringing down the Media Server:
 
 ```console
@@ -291,7 +293,7 @@ You can restart the Kurento Media Server by running:
 docker start fiware-kurento
 ```
 
-## Analysing the Code
+## Analyzing the Code
 
 The code under discussion can be found within the `kurento-hello-world` directory within the Git Repository
 The main script of this demo is called `server.js`. For simplicity, all URLs have been hard-coded and error
@@ -562,7 +564,7 @@ A fuller description of the code can be found within the Kurento documenation.
 # Altering Media Streams
 
 In order to alter context, we will need to be able to process the media stream. This second example
-builds on the previous WebRTC loopback video communication but also analyses and
+builds on the previous WebRTC loopback video communication but also analyzes and
 alters the media stream by detecting faces and placing a hat over detected faces. This is an example of a
 Computer Vision and Augmented Reality filter.
 
@@ -579,7 +581,10 @@ To start the system with an example of **Kurento** altering a media stream, run 
 ### Running the Example
 
 
-## Analysing the Code
+![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-magic-mirror.png)
+
+
+## Analyzing the Code
 
 The code under discussion can be found within the `kurento-magic-mirror` directory within the Git Repository
 
@@ -587,7 +592,7 @@ The code under discussion can be found within the `kurento-magic-mirror` directo
 
 # Raising Context Events
 
-A media stream can also be analysed and used to raise context-related events. The final example of
+A media stream can also be analyzed and used to raise context-related events. The final example of
 this tutorial adds a vehicle number plate detector filter element to the WebRTC video communication
 
 ![](https://fiware.github.io/tutorials.Media-Streams/img/plate-detector.png)
@@ -608,14 +613,21 @@ To start the system with an example of **Kurento** raising events, run the follo
 ### Running the Example
 
 
-## Analysing the Code
+## Analyzing the Code
 
 The code under discussion can be found within the `kurento-platedetector` directory within the Git Repository
 
 
+* [Argentina](https://fiware.github.io/tutorials.Media-Streams/img/vrn-argentina.png)
+* [Australia (NSW)](https://fiware.github.io/tutorials.Media-Streams/img/vrn-new-south-wales.png)
+* [Australia (WA)](https://fiware.github.io/tutorials.Media-Streams/img/vrn-western-australia.png)
+* [Canada](https://fiware.github.io/tutorials.Media-Streams/img/vrn-new-brunswick.png)
+* [Finland](https://fiware.github.io/tutorials.Media-Streams/img/vrn-finland.png)
+* [India](https://fiware.github.io/tutorials.Media-Streams/img/vrn-india-kolkata.png)
+* [Russia](https://fiware.github.io/tutorials.Media-Streams/img/vrn-russia.png)
+* [Sweden](https://fiware.github.io/tutorials.Media-Streams/img/vrn-sweden.png)
 
-
-
+Further Vehicle Registration Plate images are available on [Wikipedia](https://en.wikipedia.org/wiki/Vehicle_registration_plate)
 
 # Next Steps
 
@@ -633,4 +645,18 @@ For more ideas about the capabilities of the **Kurento** media server, please re
 The Program includes additional submodules which were obtained under license:
 
 * [kurento-example/nodejs](https://github.com/Kurento/kurento-tutorial-node) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
+
+The Vehicle Registration Plate Images are public domain or have been obtained from Wikipedia Commons under license:
+
+*  Argentina  © [Quilmeño89](https://commons.wikimedia.org/wiki/User:Quilme%C3%B1o89) **Creative Commons Attribution-Share Alike 4.0 International**
+* Australia  © [EurovisionNim](https://commons.wikimedia.org/wiki/User:EurovisionNim) **Creative Commons Attribution-Share Alike 4.0 International**
+* Finland  © [Krokodyl](https://commons.wikimedia.org/wiki/User:Krokodyl) **Creative Commons Attribution 2.5 Generic**
+* India  © [Biswaruo Ganguly](https://commons.wikimedia.org/wiki/User:Gangulybiswarup) **Creative Commons Attribution 3.0 Unported**
+* Russia  © [Krokodyl](https://commons.wikimedia.org/wiki/User:Krokodyl) **Creative Commons Attribution 2.5 Generic**
+* Sweden  © [Lalpino](https://commons.wikimedia.org/wiki/User:Lalpino) **Creative Commons Attribution-Share Alike 4.0 International**
+
+
+
+
+
 
