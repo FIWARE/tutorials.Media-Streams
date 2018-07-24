@@ -841,6 +841,8 @@ For more ideas about the capabilities of the **Kurento Media Server**, please re
 The Program includes additional submodules which were obtained under license:
 
 * [kurento-example/nodejs](https://github.com/Kurento/kurento-tutorial-node) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
+* [kurento-example/java](https://github.com/Kurento/kurento-tutorial-java) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
+* [kurento-example/client-side-javascript](https://github.com/Kurento/kurento-tutorial-js) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
 
 The vehicle registration plate images are public domain or have been obtained from Wikipedia Commons under license:
 
