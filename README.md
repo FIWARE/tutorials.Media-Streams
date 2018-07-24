@@ -580,8 +580,12 @@ To start the system with an example of **Kurento** altering a media stream, run 
 
 ### Running the Example
 
+To run the example, open a WebRTC compatible browser at `https://localhost:8443` and accept HTTPS traffic to open
+the page. The application consists of a single HTML web page containing two HTML5 `<video>` tags: one showing
+the local stream (as captured by the local webcam) and the other showing the remote stream sent by the media server
+back to the client. Click on the start button and the  modified video will be displayed in on the right.
 
-![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror.png)
+![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror-screenshot.png)
 
 
 ## Analyzing the Code
@@ -613,12 +617,17 @@ To start the system with an example of **Kurento** raising events, run the follo
 ### Running the Example
 
 
-## Analyzing the Code
+To run the example, open a WebRTC compatible browser at `https://localhost:8443` and accept HTTPS traffic to open
+the page. The application consists of a single HTML web page containing two HTML5 `<video>` tags: one showing
+the local stream (as captured by the local webcam) and the other showing the remote stream sent by the media server
+back to the client. Click on the start button and the  same video will be displayed in both `<video>` elements.
 
-The code under discussion can be found within the `kurento-platedetector` directory within the Git Repository
+Select the image of a Vehicle registration plate from the list below and display it on your phone and see if the
+plate is detected
 
 
 * [Argentina](https://fiware.github.io/tutorials.Media-Streams/img/vrn-argentina.jpg)
+* [Botswana](https://fiware.github.io/tutorials.Media-Streams/img/vrn-botswana.jpg)
 * [Australia (NSW)](https://fiware.github.io/tutorials.Media-Streams/img/vrn-new-south-wales.jpg)
 * [Australia (WA)](https://fiware.github.io/tutorials.Media-Streams/img/vrn-western-australia.jpg)
 * [Canada](https://fiware.github.io/tutorials.Media-Streams/img/vrn-new-brunswick.jpg)
@@ -628,6 +637,26 @@ The code under discussion can be found within the `kurento-platedetector` direct
 * [Sweden](https://fiware.github.io/tutorials.Media-Streams/img/vrn-sweden.jpg)
 
 Further Vehicle Registration Plate images are available on [Wikipedia](https://en.wikipedia.org/wiki/Vehicle_registration_plate)
+
+
+![](https://fiware.github.io/tutorials.Media-Streams/img/plate-detector-screenshot.png)
+
+
+For example with the vehicle registration plate displayed in the screenshot above, the following output is obtained.
+
+```
+License plate detected --8886AJR
+```
+
+The reliability of detection will depend on the camera and filter used.
+
+
+## Analyzing the Code
+
+The code under discussion can be found within the `kurento-platedetector` directory within the Git Repository
+
+
+
 
 # Next Steps
 
