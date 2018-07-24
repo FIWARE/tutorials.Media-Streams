@@ -581,7 +581,7 @@ To start the system with an example of **Kurento** altering a media stream, run 
 ### Running the Example
 
 
-![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-magic-mirror.png)
+![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror.png)
 
 
 ## Analyzing the Code
@@ -618,14 +618,14 @@ To start the system with an example of **Kurento** raising events, run the follo
 The code under discussion can be found within the `kurento-platedetector` directory within the Git Repository
 
 
-* [Argentina](https://fiware.github.io/tutorials.Media-Streams/img/vrn-argentina.png)
-* [Australia (NSW)](https://fiware.github.io/tutorials.Media-Streams/img/vrn-new-south-wales.png)
-* [Australia (WA)](https://fiware.github.io/tutorials.Media-Streams/img/vrn-western-australia.png)
-* [Canada](https://fiware.github.io/tutorials.Media-Streams/img/vrn-new-brunswick.png)
-* [Finland](https://fiware.github.io/tutorials.Media-Streams/img/vrn-finland.png)
-* [India](https://fiware.github.io/tutorials.Media-Streams/img/vrn-india-kolkata.png)
-* [Russia](https://fiware.github.io/tutorials.Media-Streams/img/vrn-russia.png)
-* [Sweden](https://fiware.github.io/tutorials.Media-Streams/img/vrn-sweden.png)
+* [Argentina](https://fiware.github.io/tutorials.Media-Streams/img/vrn-argentina.jpg)
+* [Australia (NSW)](https://fiware.github.io/tutorials.Media-Streams/img/vrn-new-south-wales.jpg)
+* [Australia (WA)](https://fiware.github.io/tutorials.Media-Streams/img/vrn-western-australia.jpg)
+* [Canada](https://fiware.github.io/tutorials.Media-Streams/img/vrn-new-brunswick.jpg)
+* [Finland](https://fiware.github.io/tutorials.Media-Streams/img/vrn-finland.jpg)
+* [India](https://fiware.github.io/tutorials.Media-Streams/img/vrn-india-kolkata.jpg)
+* [Russia](https://fiware.github.io/tutorials.Media-Streams/img/vrn-russia.jpg)
+* [Sweden](https://fiware.github.io/tutorials.Media-Streams/img/vrn-sweden.jpg)
 
 Further Vehicle Registration Plate images are available on [Wikipedia](https://en.wikipedia.org/wiki/Vehicle_registration_plate)
 
