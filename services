@@ -12,7 +12,7 @@ stoppingContainers () {
 	docker-compose --log-level ERROR -f docker-compose/kurento-with-filters.yml -p fiware down -v --remove-orphans
 }
 startingContainers () {
-	echo -e "Starting two containers - \033[1;30mKurento\033[0m and \033[1;30mKurento-Examples (${command})\033[0m"
+	echo -e "Starting two containers - \033[1;35mKurento\033[0m and \033[1;30mKurento-Examples (${command})\033[0m"
 	TUTORIAL_NAME=${command} docker-compose --log-level ERROR -f docker-compose/kurento-with-filters.yml -p fiware up -d --remove-orphans 
 }
 
@@ -31,7 +31,7 @@ case "${command}" in
         ;;
     "start")
 		stoppingContainers;
-		echo -e "Starting two containers - \033[1;30mKurento\033[0m and \033[1;30mKurento-Examples (hello-world)\033[0m"
+		echo -e "Starting two containers - \033[1;35mKurento\033[0m and \033[1;30mKurento-Examples (hello-world)\033[0m"
 		docker-compose --log-level ERROR -f docker-compose/kurento.yml -p fiware up -d --remove-orphans 
 		;;
 	"chroma")
@@ -44,7 +44,7 @@ case "${command}" in
 		;;
 	"hello-world")
 		stoppingContainers;
-		echo -e "Starting two containers - \033[1;30mKurento\033[0m and \033[1;30mKurento-Examples (hello-world)\033[0m"
+		echo -e "Starting two containers - \033[1;35mKurento\033[0m and \033[1;30mKurento-Examples (hello-world)\033[0m"
 		docker-compose --log-level ERROR -f docker-compose/kurento.yml -p fiware up -d --remove-orphans 
 		;;
 	"magic-mirror")
