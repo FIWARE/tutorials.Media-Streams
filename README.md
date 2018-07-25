@@ -14,7 +14,7 @@ client-side JavaScript are also available.
 
 The tutorial introduces a series of exercises which can be run directly from within a [Docker](https://www.docker.com) container, no HTTP calls are required.
 
-
+* このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。
 
 # Contents
 
@@ -59,11 +59,11 @@ The tutorial introduces a series of exercises which can be run directly from wit
 [WebRTC](https://webrtc.org/) is a set of protocols enabling direct peer-to-peer Real-Time Communications (RTC) between
 browsers or mobile applications.- this would allow a user to make a direct video call to a person in another remote location.
 However the type of applications which can be created using direct one-to-one communication are limited, and the scope of
-WebRTC can be enhanced by introducing an intellegent middleware application between the two clients.
+WebRTC can be enhanced by introducing an intelligent middleware application between the two clients.
 
 The FIWARE **Kurento** generic enabler is a WebRTC Media Server. Each client makes a direct connection to the server, and
 the server intercepts the stream of data and passes the communication on to another client or clients. This model enables
-additional features such as group communition and broadcasting, but also means that is possible to process and interpret the
+additional features such as group communication and broadcasting, but also means that is possible to process and interpret the
 media stream as it is received enabling object detection - and hence an ability to raise context events - as well as
 transcoding, recording or mixing.
 
@@ -280,7 +280,7 @@ back to the client. Click on the start button and the  same video will be displa
 
 ![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-screenshot.png)
 
-You  can check that the remote stream has been re-directed by bringing down the Media Server:
+You can check that the remote stream has been re-directed by bringing down the Media Server:
 
 ```console
 docker stop fiware-kurento
@@ -392,7 +392,7 @@ function getKurentoClient(callback) {
 }
 ```
 
-The `KurentoClient` provides a simplied [interface](https://doc-kurento.readthedocs.io/en/stable/features/kurento_client.html)
+The `KurentoClient` provides a simplified [interface](https://doc-kurento.readthedocs.io/en/stable/features/kurento_client.html)
 for  manipulating Media Elements and Media Pipelines - a Node.js `npm` library and Java `jar` file are available.
 
 
@@ -404,7 +404,7 @@ chained together and therefore represent a series of operations on the media str
 
 In the Hello World example we will need a single `WebRtcEndpoint` that connects back to itself (i.e. in loopback)
 
-These functions are called in the `start` function, which is fired when the `start` message is received:
+These functions are called in the `start()` function, which is fired when the `start` message is received:
 
 ```javascript
 function start(sessionId, ws, sdpOffer, callback) {
@@ -497,7 +497,7 @@ function onIceCandidate(sessionId, _candidate) {
 
 The connection and rendering of the video streams on the rendered web page is achieved using the JavaScript
 [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) helped along with
-a client-side JavaScript library - `kurento-utils.js`  used to  simplify the WebRTC interaction with the
+a client-side JavaScript library - `kurento-utils.js` used to  simplify the WebRTC interaction with the
 application server. The complete JavaScript can be found in `static/js/index.js`.
 
 
@@ -558,7 +558,7 @@ ws.onmessage = function(message) {
 
 ```
 
-A fuller description of the code can be found within the **Kurento** documenation.
+A fuller description of the code can be found within the **Kurento** documentation.
 
 
 # Altering Media Streams
@@ -760,7 +760,7 @@ const kurento = require('kurento-client');
 kurento.register('kurento-module-platedetector');
 ```
 
-The  `platedetector.PlateDetectorFilter` can be then be created using the `pipeline.create()` function.
+The `platedetector.PlateDetectorFilter` can be then be created using the `pipeline.create()` function.
 Extending the `createMediaElements()` and `connectMediaElements()` functions as shown below to add the filter
 to the Media pipeline:
 
@@ -822,7 +822,7 @@ function plateDetected(message) {
 }
 ```
 
-The result is that the details of the vehicle registration plate  is now displayed on screen.
+The result is that the details of the vehicle registration plate is now displayed on screen.
 
 
 # Next Steps
@@ -830,7 +830,7 @@ The result is that the details of the vehicle registration plate  is now display
 Want to learn how to add more complexity to your FIWARE application by adding advanced features?
 You can find out by reading the other [tutorials in this series](https://fiware-tutorials.readthedocs.io/en/latest)
 
-For more ideas about the capabilities of the **Kurento Media Server**, please read the offical [Kurento Tutorial Documentation](https://doc-kurento.readthedocs.io/).
+For more ideas about the capabilities of the **Kurento Media Server**, please read the official [Kurento Tutorial Documentation](https://doc-kurento.readthedocs.io/).
 
 ---
 
