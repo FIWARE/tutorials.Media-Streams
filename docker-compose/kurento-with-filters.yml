@@ -1,7 +1,6 @@
-version: "3"
+version: "3.1"
 
 services:
-
   kurento-examples:
     image: fiware/kurento-examples
     container_name: examples-kurento
@@ -37,4 +36,7 @@ services:
 
 networks:
   default:
+    ipam:
+      config:
+        - subnet: 172.18.1.0/24
      
