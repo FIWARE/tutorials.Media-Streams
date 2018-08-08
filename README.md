@@ -278,7 +278,10 @@ the page. The application consists of a single HTML web page containing two HTML
 the local stream (as captured by the local webcam) and the other showing the remote stream sent by the media server
 back to the client. Click on the start button and the  same video will be displayed in both `<video>` elements.
 
-![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-screenshot.png)
+[![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-screenshot.png)](https://www.youtube.com/watch?v=vGEnkSOp_xc "Hello World")
+
+Click on the image above to watch a demo of the hello world example.
+
 
 You can check that the remote stream has been re-directed by bringing down the Media Server:
 
@@ -585,7 +588,10 @@ the page. The application consists of a single HTML web page containing two HTML
 the local stream (as captured by the local webcam) and the other showing the remote stream sent by the media server
 back to the client. Click on the start button and the  modified video will be displayed in on the right.
 
-![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror-screenshot.png)
+[![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror-screenshot.png)
+
+Click on the link to watch a [demo of the magic mirror](https://www.youtube.com/watch?v=h84HFkvWGgw "Magic Mirror")
+
 
 
 ## Magic Mirror - Analyzing the Code
