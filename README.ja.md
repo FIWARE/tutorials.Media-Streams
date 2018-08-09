@@ -254,7 +254,9 @@ Server: WebSocket++/0.7.0
 
 この例を実行するには、`https://localhost:8443 `で WebRTC 互換ブラウザ を開き、ページをオープンするために、HTTPS トラフィックを受け入れます。アプリケーションは、2つの HTML5  `<video>` タグを含む、1つの HTML Web ページで構成されています。1つはローカル Web-cam でキャプチャされたローカル・ストリームと、もう1つはメディア・サーバからクライアントに送信されたリモート・ストリームです。"Start" ボタンをクリックすると、両方の `<video>` 要素に同じビデオが表示されます。
 
-![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-screenshot.png)
+[![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-screenshot.png)](https://www.youtube.com/watch?v=vGEnkSOp_xc "Hello World")
+
+Hello world の例のデモを見るには上の画像をクリックしてください。
 
 メディア・サーバを停止すると、リモート・ストリームがリダイレクトされたことを確認できます :
 
@@ -541,7 +543,9 @@ ws.onmessage = function(message) {
 
 この例を実行するには、WebRTC 互換ブラウザを`https://localhost:8443` で開き、ページをオープンするために、HTTPS トラフィックを受け入れます。アプリケーションは、2つの HTML5  `<video>` タグを含む、1つの HTML Web ページで構成されています。1つはローカル Web サーバでキャプチャされたローカル・ストリームと、もう1つはメディア・サーバからクライアントに送信されたリモート・ストリームです。"Start "ボタンをクリックすると、修正されたビデオが右側に表示されます。
 
-![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror-screenshot.png)
+[![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror-screenshot.png)
+
+[マジック・ミラーのデモ](https://www.youtube.com/watch?v=h84HFkvWGgw "Magic Mirror") を見るにはリンクをクリックしてください。
 
 
 <a name="magic-mirror---analyzing-the-code"></a>
