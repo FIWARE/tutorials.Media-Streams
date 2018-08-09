@@ -256,6 +256,8 @@ Server: WebSocket++/0.7.0
 
 ![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-screenshot.png)
 
+[Hello world の例](https://www.youtube.com/watch?v=vGEnkSOp_xc)のデモを見るにはリンクをクリックしてください。
+
 メディア・サーバを停止すると、リモート・ストリームがリダイレクトされたことを確認できます :
 
 ```console
@@ -542,6 +544,8 @@ ws.onmessage = function(message) {
 この例を実行するには、WebRTC 互換ブラウザを`https://localhost:8443` で開き、ページをオープンするために、HTTPS トラフィックを受け入れます。アプリケーションは、2つの HTML5  `<video>` タグを含む、1つの HTML Web ページで構成されています。1つはローカル Web サーバでキャプチャされたローカル・ストリームと、もう1つはメディア・サーバからクライアントに送信されたリモート・ストリームです。"Start "ボタンをクリックすると、修正されたビデオが右側に表示されます。
 
 ![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror-screenshot.png)
+
+[マジック・ミラーのデモ](https://www.youtube.com/watch?v=h84HFkvWGgw "Magic Mirror") を見るにはリンクをクリックしてください。
 
 
 <a name="magic-mirror---analyzing-the-code"></a>
