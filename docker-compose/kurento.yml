@@ -22,7 +22,7 @@ services:
       - "TUTORIAL_NAME=${TUTORIAL_NAME}"
 
   kurento:
-    image: fiware/stream-oriented-kurento:6.6.0
+    image: fiware/stream-oriented-kurento:6.8.0
     hostname: kurento
     container_name: fiware-kurento
     expose:

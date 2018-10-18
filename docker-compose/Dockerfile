@@ -1,4 +1,4 @@
-FROM fiware/stream-oriented-kurento:6.6.0
+FROM fiware/stream-oriented-kurento:6.8.0
 
 
 
