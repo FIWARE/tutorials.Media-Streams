@@ -32,21 +32,21 @@ The tutorial introduces a series of exercises which can be run directly from wit
     + [Service Health](#service-health)
     + [Hello World - Running the Example](#hello-world---running-the-example)
   * [Hello World - Analyzing the Code](#hello-world---analyzing-the-code)
-    + [Back-End - WebSocket Connection](#back-end---websocket-connection)
-    + [Back-End - Connecting to Kurento](#back-end---connecting-to-kurento)
-    + [Back-End - Creating a Media Pipeline](#back-end---creating-a-media-pipeline)
-    + [Front-End - JavaScript on the rendered page](#front-end---javascript-on-the-rendered-page)
+    + [Backend - WebSocket Connection](#back-end---websocket-connection)
+    + [Backend - Connecting to Kurento](#back-end---connecting-to-kurento)
+    + [Backend - Creating a Media Pipeline](#back-end---creating-a-media-pipeline)
+    + [Frontend - JavaScript on the rendered page](#front-end---javascript-on-the-rendered-page)
 - [Altering Media Streams](#altering-media-streams)
   * [Magic Mirror - Start Up](#magic-mirror---start-up)
     + [Magic Mirror - Running the Example](#magic-mirror---running-the-example)
   * [Magic Mirror - Analyzing the Code](#magic-mirror---analyzing-the-code)
-    + [Back-End - Adding a built-in Filter to a Media Pipeline](#back-end---adding-a-built-in-filter-to-a-media-pipeline)
+    + [Backend - Adding a built-in Filter to a Media Pipeline](#back-end---adding-a-built-in-filter-to-a-media-pipeline)
 - [Raising Context Events](#raising-context-events)
   * [Plate Detector - Start Up](#plate-detector----start-up)
     + [Plate Detector - Running the Example](#plate-detector---running-the-example)
   * [Plate Detector - Analyzing the Code](#plate-detector---analyzing-the-code)
-    + [Back-End - Adding a custom filter to a Media Pipeline](#back-end---adding-a-custom-filter-to-a-media-pipeline)
-    + [Front-End - JavaScript on the rendered page](#front-end---javascript-on-the-rendered-page-1)
+    + [Backend - Adding a custom filter to a Media Pipeline](#back-end---adding-a-custom-filter-to-a-media-pipeline)
+    + [Frontend - JavaScript on the rendered page](#front-end---javascript-on-the-rendered-page-1)
 
 
 # What are Media Streams?
@@ -102,7 +102,7 @@ will need to follow the instructions found  [here](https://docs.docker.com/compo
 ## Cygwin
 
 We will start up our services using a simple bash script. Windows users should download [cygwin](http://www.cygwin.com/) to provide a
-command line functionality similar to a Linux distribution on Windows.
+command-line functionality similar to a Linux distribution on Windows.
 
 
 # Start Up
@@ -120,7 +120,7 @@ git submodule update --init --recursive
 >**Note** The initial creation of Docker images can take up to three minutes
 
 
-Thereafter, all services can be initialized from the command line by running the [services](https://github.com/Fiware/tutorials.Media-Streams/blob/master/services) Bash script provided within the repository:
+Thereafter, all services can be initialized from the command-line by running the [services](https://github.com/Fiware/tutorials.Media-Streams/blob/master/services) Bash script provided within the repository:
 
 ```console
 ./services <command>
@@ -200,7 +200,7 @@ The `kurento` container is listening on a single port:
 
 The `kurento-examples` container is a web app server listening on a single port:
 
-* Port `8443` is exposed for HTTPS traffic so we can display the webpage
+* Port `8443` is exposed for HTTPS traffic so we can display the web page
 
 The `kurento-examples` container is driven by environment variables as shown:
 
@@ -306,9 +306,9 @@ handling has been removed from the code snippets under discussion to make them e
 
 
 
-### Back-End - WebSocket Connection
+### Backend - WebSocket Connection
 
-Dynamic communication between the Front-End rendered web-page and the Back-End application server occurs using [WebSockets](https://www.html5rocks.com/en/tutorials/websockets/basics/). The code handling the connection at the server
+Dynamic communication between the frontend rendered web page and the backend application server occurs using [WebSockets](https://www.html5rocks.com/en/tutorials/websockets/basics/). The code handling the connection at the server
 can be seen below:
 
 ```javascript
@@ -370,7 +370,7 @@ message types to handle are `start`  which then makes a connection to the **Kure
 function below) and `onIceCandidate` (see `onIceCandidate()` function below). Stopping, closing the connection and
 error handling are handled in a standard manner and are not discussed here.
 
-### Back-End - Connecting to Kurento
+### Backend - Connecting to Kurento
 
 **Kurento** offers a well-defined [WebSocket API](http://kurento.github.io/doc-kurento/) -
 To establish a WebSocket connection, the client needs to send a WebSocket handshake request
@@ -399,7 +399,7 @@ The `KurentoClient` provides a simplified [interface](https://doc-kurento.readth
 for  manipulating Media Elements and Media Pipelines - a Node.js `npm` library and Java `jar` file are available.
 
 
-### Back-End - Creating a Media Pipeline
+### Backend - Creating a Media Pipeline
 
 To operate on the incoming video we will need to create a media pipeline - this is a processing widget
 where the source generated by one element is used at the input for another. Pipeline elements can be
@@ -496,7 +496,7 @@ function onIceCandidate(sessionId, _candidate) {
 }
 ```
 
-### Front-End - JavaScript on the rendered page
+### Frontend - JavaScript on the rendered page
 
 The connection and rendering of the video streams on the rendered web page is achieved using the JavaScript
 [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) helped along with
@@ -598,18 +598,18 @@ Click on the link to watch a [demo of the magic mirror](https://www.youtube.com/
 
 The code under discussion can be found within the `kurento-magic-mirror` directory within the Git Repository.
 This example builds on the previous `hello world` example, and much of the common boilerplate plumbing  -
-making the WebSocket connections between the Web-page and the Application Server, and the connections between
+making the WebSocket connections between the web page and the Application Server, and the connections between
 the Application Server and the **Kurento Media Server** remains the same. Please refer to the sections above to
 refresh your understanding:
 
-* Back-End - WebSocket Connection
-* Back-End - Connecting to Kurento
-* Front-End - JavaScript on the rendered page
+* Backend - WebSocket Connection
+* Backend - Connecting to Kurento
+* Frontend - JavaScript on the rendered page
 
-### Back-End - Adding a built-in Filter to a Media Pipeline
+### Backend - Adding a built-in Filter to a Media Pipeline
 
 The main difference compared to the previous example, is that we are going to add a **filter**
-to alter the video output prior to sending it to the web-page.  The `kms-filters` module is loaded by
+to alter the video output prior to sending it to the web page.  The `kms-filters` module is loaded by
 default as part of the **Kurento Media Server** - it contains the following built-in [filters](https://doc-kurento.readthedocs.io/en/latest/features/kurento_api.html#filters):
 
 * The `ZBarFilter` filter detects QR and bar codes in a video stream. When a code is found, the filter raises a `CodeFoundEvent`
@@ -726,14 +726,14 @@ The reliability of detection will depend on the camera and filter used.
 The code under discussion can be found within the `kurento-platedetector` directory within the Git Repository
 
 Once again, the boilerplate plumbing very similar to the previous examples - the code
-making the WebSocket connections between the Web-page and the Application Server, and the connections between
+making the WebSocket connections between the web page and the Application Server, and the connections between
 the Application Server and the **Kurento Media Server** are unaltered. Please refer to the sections above to refresh your understanding
 
-* Back-End - WebSocket Connection
-* Back-End - Connecting to Kurento
-* Front-End - JavaScript on the rendered page
+* Backend - WebSocket Connection
+* Backend - Connecting to Kurento
+* Frontend - JavaScript on the rendered page
 
-### Back-End - Adding a custom filter to a Media Pipeline
+### Backend - Adding a custom filter to a Media Pipeline
 
 Beyond the basic `kms-filters` filters provided, you will need to
 [write you own custom code](https://doc-kurento.readthedocs.io/en/stable/user/writing_modules.html) to process
@@ -805,7 +805,7 @@ function connectMediaElements(webRtcEndpoint, filter, callback) {
 }
 ```
 
-### Front-End - JavaScript on the rendered page
+### Frontend - JavaScript on the rendered page
 
 In addition to the standard boilerplate from the previous examples, an extra clause is added
 to the WebSocket processing to handle the `plateDectected` event which is raised by the `platedetector.PlateDetectorFilter` :
@@ -846,7 +846,7 @@ For more ideas about the capabilities of the **Kurento Media Server**, please re
 
 The Program includes additional submodules which were obtained under license:
 
-* [kurento-example/nodejs](https://github.com/Kurento/kurento-tutorial-node) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
+* [kurento-example/Node.js](https://github.com/Kurento/kurento-tutorial-node) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
 * [kurento-example/java](https://github.com/Kurento/kurento-tutorial-java) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
 * [kurento-example/client-side-javascript](https://github.com/Kurento/kurento-tutorial-js) -  © [Kurento](http://kurento.org) **Apache 2.0 license**
 
