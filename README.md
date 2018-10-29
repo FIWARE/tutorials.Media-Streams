@@ -763,7 +763,7 @@ function connectMediaElements(webRtcEndpoint, faceOverlayFilter, callback) {
 
 The functions called in the `start()` function remain the same - the media
 streams are connected and now passed through a pipeline before being retuned to
-the web-page. The result is that the video stream is now intercepted and altered
+the web page. The result is that the video stream is now intercepted and altered
 as demonstrated.
 
 # Raising Context Events
