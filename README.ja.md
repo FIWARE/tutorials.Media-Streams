@@ -460,7 +460,7 @@ Media Server** に接続する `start` と、`onIceCandidate` です。`start()`
 ### バック・エンド - Kurento への接続
 
 **Kurento** は、明確に定義されてた
-[WebSocket API](http://kurento.github.io/doc-kurento/) を提供します。 WebSocket
+[WebSocket API](https://kurento.readthedocs.io/en/stable/doc/open_spec.html) を提供します。 WebSocket
 接続を確立するには、クライアントは WebSocket ハンドシェイク要求を `/kurento` エ
 ンドポイントに送信する必要があり、メディア・サーバは WebSocket ハンドシェイク応
 答を返します。
