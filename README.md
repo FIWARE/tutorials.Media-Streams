@@ -20,7 +20,10 @@ within a [Docker](https://www.docker.com) container, no HTTP calls are required.
 
 -   このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。
 
-# Contents
+## Contents
+
+<details>
+<summary><strong>Details</strong></summary>
 
 -   [What are Media Streams?](#what-are-media-streams)
     -   [The teaching goal of this tutorial](#the-teaching-goal-of-this-tutorial)
@@ -51,6 +54,8 @@ within a [Docker](https://www.docker.com) container, no HTTP calls are required.
     -   [Plate Detector - Analyzing the Code](#plate-detector---analyzing-the-code)
         -   [Backend - Adding a custom filter to a Media Pipeline](#back-end---adding-a-custom-filter-to-a-media-pipeline)
         -   [Frontend - JavaScript on the rendered page](#front-end---javascript-on-the-rendered-page-1)
+
+</details>
 
 # What are Media Streams?
 

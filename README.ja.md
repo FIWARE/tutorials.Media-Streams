@@ -18,7 +18,10 @@
 このチュートリアルでは、[Docker](https://www.docker.com) コンテナから直接実行で
 きる一連の演習を紹介していますが、HTTP コールは必要ありません。
 
-# 内容
+## 内容
+
+<details>
+<summary>詳細 <b>(クリックして拡大)</b></summary>
 
 -   [メディア・ストリームとは何ですか？](#what-are-media-streams)
     -   [このチュートリアルの指導目標](#the-teaching-goal-of-this-tutorial)
@@ -49,6 +52,8 @@
     -   [プレート検出器 - コードの分析](#plate-detector---analyzing-the-code)
         -   [バック・エンド - カスタム・フィルタをメディア・パイプラインに追加](#back-end---adding-a-custom-filter-to-a-media-pipeline)
         -   [フロント・エンド - レンダリングされたページの JavaScript](#front-end---javascript-on-the-rendered-page-1)
+
+</details>
 
 <a name="what-are-media-streams"></a>
 
