@@ -1027,7 +1027,7 @@ function plateDetected(message) {
 
 ## ライセンス
 
-[MIT](LICENSE) © FIWARE Foundation e.V.
+[MIT](LICENSE) © 2018-2019 FIWARE Foundation e.V.
 
 プログラムには、ライセンスの下で入手した追加のサブモジュールが含まれています :
 

@@ -974,7 +974,7 @@ read the official
 
 ## License
 
-[MIT](LICENSE) © FIWARE Foundation e.V.
+[MIT](LICENSE) © 2018-2019 FIWARE Foundation e.V.
 
 The Program includes additional submodules which were obtained under license:
 
