@@ -6,7 +6,7 @@ services:
     container_name: examples-kurento
     depends_on:
       - kurento
-    build: 
+    build:
       context: ../kurento-examples
       dockerfile: Dockerfile
     ports:
@@ -24,7 +24,7 @@ services:
     image: fiware/stream-oriented-kurento-plus-filters
     hostname: kurento
     container_name: fiware-kurento
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     expose:
@@ -39,4 +39,3 @@ networks:
     ipam:
       config:
         - subnet: 172.18.1.0/24
-     
