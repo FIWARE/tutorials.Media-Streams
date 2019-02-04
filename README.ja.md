@@ -7,6 +7,8 @@
 <br/>
 [![Documentation](https://img.shields.io/readthedocs/fiware-tutorials.svg)](https://fiware-tutorials.rtfd.io)
 
+<!-- prettier-ignore -->
+
 これは、[WebRTC](https://webrtc.org/) を介したビデオ・ストリームの分析と拡張に使
 用されるメディア・サーバの Generic Enabler である
 、[FIWARE Kurento](http://kurento.readthedocs.io/) 入門チュートリアルです。この
