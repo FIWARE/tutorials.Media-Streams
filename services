@@ -48,7 +48,7 @@ case "${command}" in
 		stoppingContainers;
 		startingContainers;
 		;;
-	"crowd-detector")
+	"crowddetector")
 		stoppingContainers;
 		startingContainers;
 		;;
