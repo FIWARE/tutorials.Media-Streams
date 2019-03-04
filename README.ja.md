@@ -96,7 +96,7 @@ FIWARE システム内の Generic Enabler として統合し、コンテキス�
 です。
 
 デモ用のすべてのコードは
-、[kurento-examples](https://github.com/Fiware/tutorials.Media-Streams/tree/master/kurento-examples)
+、[kurento-examples](https://github.com/FIWARE/tutorials.Media-Streams/tree/master/kurento-examples)
 ディレクトリ内の `nodejs` フォルダ内にあります。代わりに
 、`client-side-javascript`と `java` の例もあります。明らかに、プログラミング言語
 の選択は、あなた自身のビジネス・ニーズに依存します。以下のコードを読んで、この点
@@ -164,7 +164,7 @@ git submodule update --init --recursive
 > **注** Docker イメージの最初の作成には最大 3 分かかります
 
 その後、リポジトリ内で提供される
-[services](https://github.com/Fiware/tutorials.Media-Streams/blob/master/services)
+[services](https://github.com/FIWARE/tutorials.Media-Streams/blob/master/services)
 Bash スクリプトを実行することによって、コマンドラインからすべてのサービスを初期
 化することができます :
 
@@ -921,7 +921,7 @@ License plate detected --8886AJR
     ・フィルタ - 本番用ではありません
 
 モジュールをインストールするには、カスタム
-[Dockerfile](https://github.com/Fiware/tutorials.Media-Streams/blob/master/docker-compose/Dockerfile)
+[Dockerfile](https://github.com/FIWARE/tutorials.Media-Streams/blob/master/docker-compose/Dockerfile)
 を使用してデフォルトの `fiware/stream-oriented-kurento` Docker イメージを拡張す
 る必要があります。この Dockerfile は、以下のようにモジュールをインストールします
 :

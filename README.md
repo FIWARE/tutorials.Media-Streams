@@ -82,7 +82,7 @@ equally have been chosen. It is merely to show how a sample programming language
 stream to potentially raise events and alter the context of a product _"powered by FIWARE"_.
 
 All the code for the demo can be found within the `nodejs` folder within the
-[kurento-examples](https://github.com/Fiware/tutorials.Media-Streams/tree/master/kurento-examples) directory.
+[kurento-examples](https://github.com/FIWARE/tutorials.Media-Streams/tree/master/kurento-examples) directory.
 Alternative `client-side-javascript` and `java` examples are also available. Obviously, your choice of programming
 language will depend upon your own business needs - when reading the code below please keep this in mind and substitute
 Node.js with your own programming language as appropriate.
@@ -130,7 +130,7 @@ git submodule update --init --recursive
 > **Note** The initial creation of Docker images can take up to three minutes
 
 Thereafter, all services can be initialized from the command-line by running the
-[services](https://github.com/Fiware/tutorials.Media-Streams/blob/master/services) Bash script provided within the
+[services](https://github.com/FIWARE/tutorials.Media-Streams/blob/master/services) Bash script provided within the
 repository:
 
 ```console
@@ -766,7 +766,7 @@ the four freely-distributable, custom modules already created by the Kurento dev
 -   `kms-platedetector`: Prototype Filter that detects vehicle plates in video streams - Not for production use.
 
 To install the modules, we must extend the default `fiware/stream-oriented-kurento` Docker image by using a custom
-[Dockerfile](https://github.com/Fiware/tutorials.Media-Streams/blob/master/docker-compose/Dockerfile), which installs
+[Dockerfile](https://github.com/FIWARE/tutorials.Media-Streams/blob/master/docker-compose/Dockerfile), which installs
 the modules as shown:
 
 ```bash
