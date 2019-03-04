@@ -154,7 +154,7 @@ FIWARE システム内の Generic Enabler として統合し、コンテキス�
 インストールを開始するには、次の手順を実行します :
 
 ```console
-git clone git@github.com:Fiware/tutorials.Media-Streams.git
+git clone git@github.com:FIWARE/tutorials.Media-Streams.git
 cd tutorials.Media-Streams
 git submodule update --init --recursive
 

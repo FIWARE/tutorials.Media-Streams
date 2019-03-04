@@ -120,7 +120,7 @@ to provide a command-line functionality similar to a Linux distribution on Windo
 To start the installation, do the following:
 
 ```console
-git clone git@github.com:Fiware/tutorials.Media-Streams.git
+git clone git@github.com:FIWARE/tutorials.Media-Streams.git
 cd tutorials.Media-Streams
 git submodule update --init --recursive
 
