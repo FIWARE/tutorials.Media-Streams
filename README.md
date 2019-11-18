@@ -120,7 +120,7 @@ to provide a command-line functionality similar to a Linux distribution on Windo
 To start the installation, do the following:
 
 ```console
-git clone git@github.com:FIWARE/tutorials.Media-Streams.git
+git clone https://github.com/FIWARE/tutorials.Media-Streams.git
 cd tutorials.Media-Streams
 git submodule update --init --recursive
 
@@ -479,12 +479,15 @@ function createMediaElements(pipeline, ws, callback) {
 
 ```javascript
 function connectMediaElements(webRtcEndpoint, callback) {
-    webRtcEndpoint.connect(webRtcEndpoint, error => {
-        if (error) {
-            return callback(error);
+    webRtcEndpoint.connect(
+        webRtcEndpoint,
+        error => {
+            if (error) {
+                return callback(error);
+            }
+            return callback(null);
         }
-        return callback(null);
-    });
+    );
 }
 ```
 
@@ -664,18 +667,24 @@ function createMediaElements(pipeline, ws, callback) {
 
 ```javascript
 function connectMediaElements(webRtcEndpoint, faceOverlayFilter, callback) {
-    webRtcEndpoint.connect(faceOverlayFilter, error => {
-        if (error) {
-            return callback(error);
-        }
-        faceOverlayFilter.connect(webRtcEndpoint, error => {
+    webRtcEndpoint.connect(
+        faceOverlayFilter,
+        error => {
             if (error) {
                 return callback(error);
             }
+            faceOverlayFilter.connect(
+                webRtcEndpoint,
+                error => {
+                    if (error) {
+                        return callback(error);
+                    }
 
-            return callback(null);
-        });
-    });
+                    return callback(null);
+                }
+            );
+        }
+    );
 }
 ```
 
@@ -806,19 +815,25 @@ function createMediaElements(pipeline, ws, callback) {
 
 ```javascript
 function connectMediaElements(webRtcEndpoint, filter, callback) {
-    webRtcEndpoint.connect(filter, error => {
-        if (error) {
-            return callback(error);
-        }
-
-        filter.connect(webRtcEndpoint, error => {
+    webRtcEndpoint.connect(
+        filter,
+        error => {
             if (error) {
                 return callback(error);
             }
 
-            return callback(null);
-        });
-    });
+            filter.connect(
+                webRtcEndpoint,
+                error => {
+                    if (error) {
+                        return callback(error);
+                    }
+
+                    return callback(null);
+                }
+            );
+        }
+    );
 }
 ```
 
