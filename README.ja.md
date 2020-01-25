@@ -4,8 +4,7 @@
 [![License: MIT](https://img.shields.io/github/license/fiware/tutorials.Media-Streams.svg)](https://opensource.org/licenses/MIT)
 [![Kurento 6.7.1](https://img.shields.io/badge/Kurento-6.7.1-4f3495.svg)](http://doc-kurento.readthedocs.io/)
 [![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/fiware.svg)](https://stackoverflow.com/questions/tagged/fiware)
-<br/>
-[![Documentation](https://img.shields.io/readthedocs/fiware-tutorials.svg)](https://fiware-tutorials.rtfd.io)
+<br/> [![Documentation](https://img.shields.io/readthedocs/fiware-tutorials.svg)](https://fiware-tutorials.rtfd.io)
 
 <!-- prettier-ignore -->
 
@@ -576,15 +575,12 @@ function createMediaElements(pipeline, ws, callback) {
 
 ```javascript
 function connectMediaElements(webRtcEndpoint, callback) {
-    webRtcEndpoint.connect(
-        webRtcEndpoint,
-        error => {
-            if (error) {
-                return callback(error);
-            }
-            return callback(null);
+    webRtcEndpoint.connect(webRtcEndpoint, error => {
+        if (error) {
+            return callback(error);
         }
-    );
+        return callback(null);
+    });
 }
 ```
 
@@ -638,9 +634,7 @@ function start() {
         onicecandidate: onIceCandidate
     };
 
-    webRtcPeer = kurentoUtils.WebRtcPeer.WebRtcPeerSendrecv(options, function(
-        error
-    ) {
+    webRtcPeer = kurentoUtils.WebRtcPeer.WebRtcPeerSendrecv(options, function(error) {
         if (error) return onError(error);
         this.generateOffer(onOffer);
     });
@@ -791,24 +785,18 @@ function createMediaElements(pipeline, ws, callback) {
 
 ```javascript
 function connectMediaElements(webRtcEndpoint, faceOverlayFilter, callback) {
-    webRtcEndpoint.connect(
-        faceOverlayFilter,
-        error => {
+    webRtcEndpoint.connect(faceOverlayFilter, error => {
+        if (error) {
+            return callback(error);
+        }
+        faceOverlayFilter.connect(webRtcEndpoint, error => {
             if (error) {
                 return callback(error);
             }
-            faceOverlayFilter.connect(
-                webRtcEndpoint,
-                error => {
-                    if (error) {
-                        return callback(error);
-                    }
 
-                    return callback(null);
-                }
-            );
-        }
-    );
+            return callback(null);
+        });
+    });
 }
 ```
 
@@ -952,41 +940,32 @@ function createMediaElements(pipeline, ws, callback) {
             return callback(error);
         }
 
-        pipeline.create(
-            "platedetector.PlateDetectorFilter",
-            (error, filter) => {
-                if (error) {
-                    return callback(error);
-                }
-
-                return callback(null, webRtcEndpoint, filter);
+        pipeline.create("platedetector.PlateDetectorFilter", (error, filter) => {
+            if (error) {
+                return callback(error);
             }
-        );
+
+            return callback(null, webRtcEndpoint, filter);
+        });
     });
 }
 ```
 
 ```javascript
 function connectMediaElements(webRtcEndpoint, filter, callback) {
-    webRtcEndpoint.connect(
-        filter,
-        error => {
+    webRtcEndpoint.connect(filter, error => {
+        if (error) {
+            return callback(error);
+        }
+
+        filter.connect(webRtcEndpoint, error => {
             if (error) {
                 return callback(error);
             }
 
-            filter.connect(
-                webRtcEndpoint,
-                error => {
-                    if (error) {
-                        return callback(error);
-                    }
-
-                    return callback(null);
-                }
-            );
-        }
-    );
+            return callback(null);
+        });
+    });
 }
 ```
 
