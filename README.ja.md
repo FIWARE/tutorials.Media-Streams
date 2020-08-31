@@ -155,6 +155,7 @@ FIWARE システム内の Generic Enabler として統合し、コンテキス�
 ```console
 git clone https://github.com/FIWARE/tutorials.Media-Streams.git
 cd tutorials.Media-Streams
+git checkout NGSI-v2
 git submodule update --init --recursive
 
 ./services create
