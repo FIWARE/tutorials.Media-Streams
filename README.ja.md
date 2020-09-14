@@ -164,7 +164,7 @@ git submodule update --init --recursive
 > **注** Docker イメージの最初の作成には最大 3 分かかります
 
 その後、リポジトリ内で提供される
-[services](https://github.com/FIWARE/tutorials.Media-Streams/blob/master/services)
+[services](https://github.com/FIWARE/tutorials.Media-Streams/blob/NGSI-v2/services)
 Bash スクリプトを実行することによって、コマンドラインからすべてのサービスを初期
 化することができます :
 
