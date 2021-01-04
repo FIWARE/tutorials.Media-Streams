@@ -87,11 +87,8 @@ case "${command}" in
 		stoppingContainers
 		;;
 	"create")
-		echo "Obtaining Latest Kurento Image"
-		docker pull fiware/stream-oriented-kurento
-		echo "Recreate Kurento with Filters"
-		docker build -t fiware/stream-oriented-kurento-plus-filters ./docker-compose
-		echo "Recreate Kurento examples"
-		docker build -t fiware/kurento-examples ./kurento-examples
+		echo "Pulling Docker images"
+		docker-compose --log-level ERROR -f docker-compose/kurento.yml -p fiware pull
+		docker-compose --log-level ERROR -f docker-compose/kurento-with-filters.yml -p fiware pull
 		;;
 esac

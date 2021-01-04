@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM node:14
 
 ENV MEDIA_SERVER_HOST=kurento
 ENV MEDIA_SERVER_PORT=8888

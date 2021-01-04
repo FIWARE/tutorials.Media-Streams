@@ -21,7 +21,7 @@ services:
       - "TUTORIAL_NAME=${TUTORIAL_NAME}"
 
   kurento:
-    image: fiware/stream-oriented-kurento-plus-filters
+    image: kurento/kurento-media-server-plus-filters
     hostname: kurento
     container_name: fiware-kurento
     build:
