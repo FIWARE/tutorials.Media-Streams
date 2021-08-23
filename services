@@ -2,29 +2,32 @@
 #
 #  Command Line Interface to start all services associated with the Fast/Micro-RTPS tutorials
 #
-#  For this tutorial the commands are merely a convenience script to run docker-compose
-#
+#  For this tutorial the commands are merely a convenience script to run ${dockerCmd}#
 
 set -e
 
 stoppingContainers () {
 	echo "Stopping running containers"
-	docker-compose -f docker-compose/kurento-with-filters.yml  down -v --remove-orphans
+	${dockerCmd} -f docker-compose/kurento-with-filters.yml down -v --remove-orphans
 }
 startingContainers () {
 	echo -e "Starting containers: - \033[1;35mKurento\033[0m and \033[1mKurento-Examples (${command})\033[0m"
 	echo -e "- \033[1;35mKurento\033[0m is a Media Server"
 	echo -e "- \033[1mKurento-Examples\033[0m displays a web app to access the web-cam"
 	echo ""
-	TUTORIAL_NAME=${command} docker-compose -f docker-compose/kurento-with-filters.yml  up -d --remove-orphans 
+	TUTORIAL_NAME=${command} ${dockerCmd} -f docker-compose/kurento-with-filters.yml up -d --remove-orphans 
 	echo ""
 	echo -e "Now open \033[4mhttps://localhost:8443\033[0m"
 }
 
 
 
-if (( $# != 1 )); then
-    echo "Illegal number of parameters"
+dockerCmd="docker compose"
+if (( $# == 2 )); then
+    dockerCmd="docker-compose"
+fi
+
+if (( $# < 1 )); then    echo "Illegal number of parameters"
     echo "usage: services [start|stop|create]"
     exit 1
 fi
@@ -41,7 +44,7 @@ case "${command}" in
 		echo -e "- \033[1;35mKurento\033[0m is a Media Server"
 		echo -e "- \033[1mKurento-Examples\033[0m displays a web app to access the web-cam"
 		echo ""
-		docker-compose -f docker-compose/kurento.yml  up -d --remove-orphans 
+		${dockerCmd} -f docker-compose/kurento.yml up -d --remove-orphans 
 		echo ""
 		echo -e "Now open \033[4mhttps://localhost:8443\033[0m"
 		;;
@@ -56,7 +59,7 @@ case "${command}" in
 	"hello-world")
 		stoppingContainers;
 		echo -e "Starting containers: - \033[1;35mKurento\033[0m and \033[1mKurento-Examples (hello-world)\033[0m"
-		docker-compose -f docker-compose/kurento.yml  up -d --remove-orphans 
+		${dockerCmd} -f docker-compose/kurento.yml up -d --remove-orphans 
 		echo ""
 		echo -e "Now open \033[4mhttps://localhost:8443\033[0m"
 		;;
@@ -92,7 +95,7 @@ case "${command}" in
 		export $(cat .env | grep "#" -v)
 		echo "Pulling Docker images"
 		docker pull curlimages/curl
-		docker-compose -f docker-compose/kurento.yml  pull
-		docker-compose -f docker-compose/kurento-with-filters.yml  pull
+		${dockerCmd} -f docker-compose/kurento.yml  pull
+		${dockerCmd} -f docker-compose/kurento-with-filters.yml  pull
 		;;
 esac
