@@ -69,7 +69,7 @@ case "${command}" in
 		startingContainers;
 		;;
 	"hello-world")
-    export $(cat .env | grep "#" -v)
+		export $(cat .env | grep "#" -v)
 		stoppingContainers;
 		echo -e "Starting containers: - \033[1;35mKurento\033[0m and \033[1mKurento-Examples (hello-world)\033[0m"
 		${dockerCmd} -f docker-compose/kurento.yml up -d --remove-orphans 
