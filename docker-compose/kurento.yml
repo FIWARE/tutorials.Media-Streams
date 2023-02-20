@@ -2,6 +2,8 @@ version: "3.8"
 
 services:
   kurento-examples:
+    labels:
+      org.fiware: 'tutorial'
     image: fiware/kurento-examples
     container_name: examples-kurento
     depends_on:
@@ -21,6 +23,8 @@ services:
       - "TUTORIAL_NAME=${TUTORIAL_NAME}"
 
   kurento:
+    labels:
+      org.fiware: 'tutorial'
     image: kurento/kurento-media-server:${KURENTO_VERSION}
     hostname: kurento
     container_name: fiware-kurento
