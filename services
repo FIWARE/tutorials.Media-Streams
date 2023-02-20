@@ -69,6 +69,7 @@ case "${command}" in
 		startingContainers;
 		;;
 	"hello-world")
+		export $(cat .env | grep "#" -v)
 		stoppingContainers;
 		echo -e "Starting containers: - \033[1;35mKurento\033[0m and \033[1mKurento-Examples (hello-world)\033[0m"
 		${dockerCmd} -f docker-compose/kurento.yml up -d --remove-orphans 
@@ -107,7 +108,8 @@ case "${command}" in
 		export $(cat .env | grep "#" -v)
 		echo "Pulling Docker images"
 		docker pull curlimages/curl
-		${dockerCmd} -f docker-compose/kurento.yml  pull
-		${dockerCmd} -f docker-compose/kurento-with-filters.yml  pull
+		${dockerCmd} -f docker-compose/kurento.yml  build kurento-examples
+		${dockerCmd} -f docker-compose/kurento.yml  pull kurento
+		${dockerCmd} -f docker-compose/kurento-with-filters.yml  build
 		;;
 esac
