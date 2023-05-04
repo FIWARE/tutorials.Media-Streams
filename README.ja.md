@@ -221,7 +221,7 @@ Bash スクリプトを実行することによって、コマンドラインか
 
 ```yaml
 kurento:
-    image: fiware/stream-oriented-kurento
+    image: quay.io/fiware/stream-oriented-kurento
     hostname: kurento
     container_name: fiware-kurento
     expose:
@@ -243,7 +243,7 @@ kurento:
 
 ```yaml
 kurento-examples:
-    image: fiware/kurento-examples
+    image: quay.io/fiware/kurento-examples
     container_name: examples-kurento
     depends_on:
         - kurento

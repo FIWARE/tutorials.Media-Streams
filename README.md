@@ -177,7 +177,7 @@ The specific architecture of each section of the tutorial is discussed below.
 
 ```yaml
 kurento:
-    image: fiware/stream-oriented-kurento
+    image: quay.io/fiware/stream-oriented-kurento
     hostname: kurento
     container_name: fiware-kurento
     expose:
@@ -196,7 +196,7 @@ The `kurento` container is listening on a single port:
 
 ```yaml
 kurento-examples:
-    image: fiware/kurento-examples
+    image: quay.io/fiware/kurento-examples
     container_name: examples-kurento
     depends_on:
         - kurento
