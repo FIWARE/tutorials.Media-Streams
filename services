@@ -121,7 +121,7 @@ case "${command}" in
 	"create")
 		export $(cat .env | grep "#" -v)
 		echo "Pulling Docker images"
-		docker pull curlimages/curl
+		docker pull quay.io/curl/curl
 		${dockerCmd} -f docker-compose/kurento.yml  build kurento-examples
 		${dockerCmd} -f docker-compose/kurento.yml  pull kurento
 		${dockerCmd} -f docker-compose/kurento-with-filters.yml  build
