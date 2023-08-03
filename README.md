@@ -181,7 +181,7 @@ kurento:
     hostname: kurento
     container_name: fiware-kurento
     expose:
-        - "8888"
+        - '8888'
     ports:
         - 8888:8888
     networks:
@@ -208,11 +208,11 @@ kurento-examples:
     networks:
         - default
     environment:
-        - "MEDIA_SERVER_HOST=kurento"
-        - "MEDIA_SERVER_PORT=8888"
-        - "APP_SERVER_HOST=kurento-examples"
-        - "APP_SERVER_PORT=8443"
-        - "TUTORIAL_NAME=${TUTORIAL_NAME}"
+        - 'MEDIA_SERVER_HOST=kurento'
+        - 'MEDIA_SERVER_PORT=8888'
+        - 'APP_SERVER_HOST=kurento-examples'
+        - 'APP_SERVER_PORT=8443'
+        - 'TUTORIAL_NAME=${TUTORIAL_NAME}'
 ```
 
 The `kurento-examples` container is a web app server listening on a single port:
@@ -294,7 +294,7 @@ page. The application consists of a single HTML web page containing two HTML5 `<
 stream (as captured by the local webcam) and the other showing the remote stream sent by the media server back to the
 client. Click on the start button and the same video will be displayed in both `<video>` elements.
 
-[![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-screenshot.png)](https://www.youtube.com/watch?v=vGEnkSOp_xc "Hello World")
+[![](https://fiware.github.io/tutorials.Media-Streams/img/hello-world-screenshot.png)](https://www.youtube.com/watch?v=vGEnkSOp_xc 'Hello World')
 
 Click on the image above to watch a demo of the hello world example.
 
@@ -325,14 +325,14 @@ Dynamic communication between the frontend rendered web page and the backend app
 can be seen below:
 
 ```javascript
-var ws = require("ws");
+var ws = require('ws');
 
 var wss = new ws.Server({
     server: server,
-    path: "/helloworld"
+    path: '/helloworld'
 });
 
-wss.on("connection", function (ws) {
+wss.on('connection', function (ws) {
     var sessionId = null;
     var request = ws.upgradeReq;
     var response = {
@@ -343,35 +343,35 @@ wss.on("connection", function (ws) {
         sessionId = request.session.id;
     });
 
-    ws.on("error", (error) => {
+    ws.on('error', (error) => {
         stop(sessionId);
     });
 
-    ws.on("close", () => {
+    ws.on('close', () => {
         stop(sessionId);
     });
 
-    ws.on("message", (_message) => {
+    ws.on('message', (_message) => {
         var message = JSON.parse(_message);
 
         switch (message.id) {
-            case "start":
+            case 'start':
                 sessionId = request.session.id;
                 start(sessionId, ws, message.sdpOffer, function (error, sdpAnswer) {
                     ws.send(
                         JSON.stringify({
-                            id: "startResponse",
+                            id: 'startResponse',
                             sdpAnswer: sdpAnswer
                         })
                     );
                 });
                 break;
 
-            case "stop":
+            case 'stop':
                 stop(sessionId);
                 break;
 
-            case "onIceCandidate":
+            case 'onIceCandidate':
                 onIceCandidate(sessionId, message.candidate);
                 break;
         }
@@ -395,14 +395,14 @@ Environment Variables values specified. For example, if the Kurento is hosted at
 `8888`.
 
 ```javascript
-const kurento = require("kurento-client");
+const kurento = require('kurento-client');
 
 function getKurentoClient(callback) {
     if (kurentoClient !== null) {
         return callback(null, kurentoClient);
     }
 
-    kurento("ws://kurento-server:8888/kurento", (error, _kurentoClient) => {
+    kurento('ws://kurento-server:8888/kurento', (error, _kurentoClient) => {
         kurentoClient = _kurentoClient;
         callback(null, kurentoClient);
     });
@@ -427,7 +427,7 @@ These functions are called in the `start()` function, which is fired when the `s
 function start(sessionId, ws, sdpOffer, callback) {
     getKurentoClient((error, kurentoClient) => {
         // Create a Media Pipeline
-        kurentoClient.create("MediaPipeline", (error, pipeline) => {
+        kurentoClient.create('MediaPipeline', (error, pipeline) => {
             createMediaElements(pipeline, ws, (error, webRtcEndpoint) => {
                 if (candidatesQueue[sessionId]) {
                     while (candidatesQueue[sessionId].length) {
@@ -437,11 +437,11 @@ function start(sessionId, ws, sdpOffer, callback) {
                 }
                 // Connect it back on itself (i.e. in loopback)
                 connectMediaElements(webRtcEndpoint, (error) => {
-                    webRtcEndpoint.on("OnIceCandidate", function (event) {
-                        const candidate = kurento.getComplexType("IceCandidate")(event.candidate);
+                    webRtcEndpoint.on('OnIceCandidate', function (event) {
+                        const candidate = kurento.getComplexType('IceCandidate')(event.candidate);
                         ws.send(
                             JSON.stringify({
-                                id: "iceCandidate",
+                                id: 'iceCandidate',
                                 candidate: candidate
                             })
                         );
@@ -471,7 +471,7 @@ Where `createMediaElements()` and `connectMediaElements()` are the following cal
 
 ```javascript
 function createMediaElements(pipeline, ws, callback) {
-    pipeline.create("WebRtcEndpoint", (error, webRtcEndpoint) => {
+    pipeline.create('WebRtcEndpoint', (error, webRtcEndpoint) => {
         if (error) {
             return callback(error);
         }
@@ -523,9 +523,9 @@ JavaScript library - `kurento-utils.js` used to simplify the WebRTC interaction 
 complete JavaScript can be found in `static/js/index.js`.
 
 ```javascript
-var ws = new WebSocket("wss://" + location.host + "/helloworld");
-var videoInput = document.getElementById("videoInput");
-var videoOutput = document.getElementById("videoOutput");
+var ws = new WebSocket('wss://' + location.host + '/helloworld');
+var videoInput = document.getElementById('videoInput');
+var videoOutput = document.getElementById('videoOutput');
 var webRtcPeer = null;
 ```
 
@@ -545,14 +545,14 @@ function start() {
 
 function onIceCandidate(candidate) {
     sendMessage({
-        id: "onIceCandidate",
+        id: 'onIceCandidate',
         candidate: candidate
     });
 }
 
 function onOffer(error, offerSdp) {
     sendMessage({
-        id: "start",
+        id: 'start',
         sdpOffer: offerSdp
     });
 }
@@ -566,13 +566,13 @@ ws.onmessage = function (message) {
     var parsedMessage = JSON.parse(message.data);
 
     switch (parsedMessage.id) {
-        case "startResponse":
+        case 'startResponse':
             webRtcPeer.processAnswer(message.sdpAnswer);
             break;
-        case "iceCandidate":
+        case 'iceCandidate':
             webRtcPeer.addIceCandidate(parsedMessage.candidate);
             break;
-        case "error":
+        case 'error':
             // Error Handling
             break;
     }
@@ -606,7 +606,7 @@ client. Click on the start button and the modified video will be displayed in on
 
 [![](https://fiware.github.io/tutorials.Media-Streams/img/magic-mirror-screenshot.png)
 
-Click on the link to watch a [demo of the magic mirror](https://www.youtube.com/watch?v=h84HFkvWGgw "Magic Mirror")
+Click on the link to watch a [demo of the magic mirror](https://www.youtube.com/watch?v=h84HFkvWGgw 'Magic Mirror')
 
 ## Magic Mirror - Analyzing the Code
 
@@ -637,18 +637,18 @@ need to extend the `createMediaElements()` and `connectMediaElements()` function
 
 ```javascript
 function createMediaElements(pipeline, ws, callback) {
-    pipeline.create("WebRtcEndpoint", (error, webRtcEndpoint) => {
+    pipeline.create('WebRtcEndpoint', (error, webRtcEndpoint) => {
         if (error) {
             return callback(error);
         }
         // Once the WebRtcEndpoint is created create a FaceOverlayFilter
-        pipeline.create("FaceOverlayFilter", (error, faceOverlayFilter) => {
+        pipeline.create('FaceOverlayFilter', (error, faceOverlayFilter) => {
             if (error) {
                 return callback(error);
             }
             // This adds the Mario hat
             faceOverlayFilter.setOverlayedImage(
-                url.format(asUrl) + "img/mario-wings.png",
+                url.format(asUrl) + 'img/mario-wings.png',
                 -0.35,
                 -1.2,
                 1.6,
@@ -782,8 +782,8 @@ apt-get -y install kms-pointerdetector-6.0 \
 For the example, we only need to register the `kurento-module-platedetector` module to make the filter available:
 
 ```javascript
-const kurento = require("kurento-client");
-kurento.register("kurento-module-platedetector");
+const kurento = require('kurento-client');
+kurento.register('kurento-module-platedetector');
 ```
 
 The `platedetector.PlateDetectorFilter` can be then be created using the `pipeline.create()` function. Extending the
@@ -791,12 +791,12 @@ The `platedetector.PlateDetectorFilter` can be then be created using the `pipeli
 
 ```javascript
 function createMediaElements(pipeline, ws, callback) {
-    pipeline.create("WebRtcEndpoint", (error, webRtcEndpoint) => {
+    pipeline.create('WebRtcEndpoint', (error, webRtcEndpoint) => {
         if (error) {
             return callback(error);
         }
 
-        pipeline.create("platedetector.PlateDetectorFilter", (error, filter) => {
+        pipeline.create('platedetector.PlateDetectorFilter', (error, filter) => {
             if (error) {
                 return callback(error);
             }
@@ -845,7 +845,7 @@ ws.onmessage = function(message) {
 
 ```javascript
 function plateDetected(message) {
-    console.log("License plate detected " + message.data.plate);
+    console.log('License plate detected ' + message.data.plate);
 }
 ```
 
