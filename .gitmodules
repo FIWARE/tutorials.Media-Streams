@@ -1,9 +1,0 @@
-[submodule "kurento-examples/nodejs"]
-	path = kurento-examples/nodejs
-	url = https://github.com/Kurento/kurento-tutorial-node.git
-[submodule "kurento-examples/java"]
-	path = kurento-examples/java
-	url = https://github.com/Kurento/kurento-tutorial-java.git
-[submodule "kurento-examples/client-side-javascript"]
-	path = kurento-examples/client-side-javascript
-	url = https://github.com/Kurento/kurento-tutorial-js.git
