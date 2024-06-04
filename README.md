@@ -136,7 +136,8 @@ git submodule update --init --recursive
 ```
 
 > [!NOTE]
->  The initial creation of Docker images can take up to three minutes
+>
+> The initial creation of Docker images can take up to three minutes
 
 Thereafter, all services can be initialized from the command-line by running the
 [services](https://github.com/FIWARE/tutorials.Media-Streams/blob/NGSI-v2/services) Bash script provided within the
@@ -149,6 +150,7 @@ repository:
 Where `<command>` will vary depending upon the exercise we wish to activate.
 
 > [!NOTE]
+>
 > If you want to clean up and start over again you can do so with the following command:
 >
 > ```console
