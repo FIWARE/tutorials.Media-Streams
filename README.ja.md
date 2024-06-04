@@ -30,7 +30,7 @@
     -   [このチュートリアルの指導目標](#the-teaching-goal-of-this-tutorial)
 -   [前提条件](#prerequisites)
     -   [Docker](#docker)
-    -   [Cygwin](#cygwin)
+    -   [WSL](#wsl)
 -   [起動](#start-up)
 -   [アーキテクチャ](#architecture)
     -   [Kurento 設定](#kurento-configuration)
@@ -140,12 +140,10 @@ FIWARE システム内の Generic Enabler として統合し、コンテキス�
 は[ここ](https://docs.docker.com/compose/install/)に記載されている手順に従う必要
 があります。
 
-<a name="cygwin"></a>
-
-## Cygwin
+## WSL
 
 シンプルな bash スクリプトを使用してサービスを開始します。Windows ユーザは
-[cygwin](http://www.cygwin.com/) をダウンロードして、Windows 上の Linux ディスト
+[を使用して Windows に Linux をインストールする方法](https://learn.microsoft.com/ja-jp/windows/wsl/install) をダウンロードして、Windows 上の Linux ディスト
 リビューションと同様のコマンドライン機能を提供する必要があります。
 
 <a name="start-up"></a>
