@@ -875,7 +875,7 @@ For more ideas about the capabilities of the **Kurento Media Server**, please re
 
 ## License
 
-[MIT](LICENSE) © 2018-2024 FIWARE Foundation e.V.
+[MIT](LICENSE) © 2018-2025 FIWARE Foundation e.V.
 
 The Program includes additional submodules which were obtained under license:
 
