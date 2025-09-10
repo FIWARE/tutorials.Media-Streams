@@ -22,7 +22,7 @@ available.
 The tutorial introduces a series of exercises which can be run directly from within a [Docker](https://www.docker.com)
 container, no HTTP calls are required.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/FIWARE/tutorials.Media-Streams/tree/NGSI-v2)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?repo=FIWARE/tutorials.Media-Streams&ref=NGSI-v2)
 
 -   このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。
 
