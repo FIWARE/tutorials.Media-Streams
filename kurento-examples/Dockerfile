@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:20
 
 ENV MEDIA_SERVER_HOST=kurento
 ENV MEDIA_SERVER_PORT=8888
@@ -7,12 +7,12 @@ ENV APP_SERVER_PORT=8443
 ENV TUTORIAL_NAME=hello-world
 
 RUN apt-get update && apt-get install -y \
-aufs-tools \
 automake \
 build-essential \
 curl \
 git \
-python
+python3 \
+&& rm -rf /var/lib/apt/lists/*
 
 
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
